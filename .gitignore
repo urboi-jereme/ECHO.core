@@ -1,0 +1,26 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+
+# Distribution folders
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# Virtual environments
+venv/
+ENV/
+.env
+.env.*
+
+# VS Code settings
+.vscode/
+
+# Test and coverage outputs
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
