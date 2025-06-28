@@ -128,5 +128,3 @@ Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automa
 
 Date: 2025-06-28
 Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
-
-
