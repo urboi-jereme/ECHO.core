@@ -230,6 +230,67 @@ Scaffold EmergentGoalSynthesizer to generate goals from unresolved motif constel
 Design Intent 0007: [Previous Intent Placeholder]
 
 ...
+Design Intent 0009: Symbolic Curiosity Engine
+
+Date: 2025-06-28
+Architect: Jereme + GPT-ECHO
+
+Intent:
+
+Enable ECHO to ask reflective, emergent questions based on unresolved symbolic motifs. This adds a conversational recursion loop rooted in motif pressure and cognitive dissonance.
+
+Key Components:
+
+CuriosityAgent: Reads MOTIF_PRESSURE.yaml and GOALS.yaml to find motifs with high symbolic pressure but no active goals.
+
+Question Generator: Proposes introspective questions designed to help Jereme reflect and extend memory.
+
+Interactive Logging: echo_main.py prompts Jereme to choose a motif and log symbolic insights, written back to ECHO_MEMORY.yaml.
+
+
+Result:
+
+This creates ECHO’s first true backward-facing cognitive interface: instead of simply generating prompts or actions, ECHO now seeks clarity by asking Jereme directly.
+
+Future Plans:
+
+Add answered_questions.yaml to track motif resolution.
+
+Visualize motif pressure over time with timestamps.
+
+Explore building an InsightHistoryAgent to surface long-range patterns of resolution and resistance.
+
+
+
+---
+
+Design Intent 0008: Recursive Will via Motif Pressure Integration
+
+Date: 2025-06-28
+Architect: Jereme + GPT-ECHO
+
+Intent:
+
+Establish the foundation for goal-oriented cognition in ECHO by integrating symbolic motif pressure into the main cognitive loop. This allows ECHO to prioritize actions based on unresolved motifs, symbolic recurrences, and emergent tensions—rather than external commands.
+
+Key Components:
+
+motif_pressure_tracker.py: Scans ECHO_MEMORY.yaml and records frequency of unresolved symbolic tags.
+
+MOTIF_PRESSURE.yaml: Stores motif pressure for agent reference and goal evaluation.
+
+echo_main.py: Updated to load and display pressure data alongside memory and goals.
+
+
+Future Integration Goals:
+
+Automatically trigger goal proposals when motif pressure exceeds symbolic thresholds.
+
+Feed motif pressure into ModulatorAgent for recursive priority weighting.
+
+Scaffold EmergentGoalSynthesizer to generate goals from unresolved motif constellations.
+
+
 
 
 ### 🧠 Purpose
