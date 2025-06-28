@@ -1,5 +1,9 @@
 import yaml
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from echo_logger import log_agent_activation
 
 PRESSURE_PATH = os.path.join(os.path.dirname(__file__), '../memory/MOTIF_PRESSURE.yaml')
 GOALS_PATH = os.path.join(os.path.dirname(__file__), '../memory/GOALS.yaml')
