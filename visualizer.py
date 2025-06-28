@@ -33,18 +33,22 @@ def show_motif_pressure():
     console.print(table)
 
 def show_goals():
-    goals = load_yaml("GOALS.yaml")
+    data = load_yaml("GOALS.yaml")
+    goals = data.get("goals", [])
     if not goals:
         console.print("[bold red]No goals found.[/bold red]")
         return
 
     table = Table(title="🎯 Current Goals")
-    table.add_column("Motif", style="cyan")
+    table.add_column("Motif(s)", style="cyan")
     table.add_column("Goal", style="green")
     table.add_column("Status", style="yellow")
 
-    for motif, entry in goals.items():
-        table.add_row(motif, entry.get("goal", "?"), entry.get("status", "unknown"))
+    for entry in goals:
+        motifs = ", ".join(entry.get("trigger_tags", ["?"]))
+        goal = entry.get("goal", "?")
+        status = entry.get("status", "unknown")
+        table.add_row(motifs, goal, status)
 
     console.print(table)
 
