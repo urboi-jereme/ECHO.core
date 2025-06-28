@@ -129,6 +129,9 @@ Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automa
 Date: 2025-06-28
 Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
 
+🔁 Design Intent 0012: Notebook Utilities Module
+Date: 2025-06-28
+Purpose: Centralize notebook setup and YAML helpers in `notebooks/setup.py` and simplify notebook code.
 ---
 
 🔁 Design Intent 0012: Sync Agent Weight Refactor
