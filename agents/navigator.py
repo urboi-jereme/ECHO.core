@@ -40,3 +40,15 @@ class NavigatorAgent:
             "prompts": prompts,
             "actions": actions
         }
+
+if __name__ == "__main__":
+    agent = NavigatorAgent()
+    plan = agent.plan_next_steps()
+
+    print("\n🔮 NavigatorAgent — Proposed Prompts:")
+    for prompt in plan["prompts"]:
+        print(f"• {prompt}")
+
+    print("\n🛠️ Proposed Architectural Actions:")
+    for action in plan["actions"]:
+        print(f"• {action}")
