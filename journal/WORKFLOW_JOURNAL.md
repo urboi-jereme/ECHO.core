@@ -1,327 +1,110 @@
-# 🧠 WORKFLOW_JOURNAL.md
+🧠 WORKFLOW_JOURNAL.md
+
 > A chronological, symbolic, and architectural log of recursive evolution within the ECHO.Core framework.
 
----
 
-## 🔗 Agent ↔ Design Intent Index
 
-| Agent Name       | Design Intent ID | Summary                                              |
-|------------------|------------------|------------------------------------------------------|
-| `IntuitionAgent` | 0002             | Symbolic resonance detector for memory motifs       |
-| `NavigatorAgent` | 0003             | Recursive planning layer based on IntuitionAgent    |
-| `ModulatorAgent` | 🔜 (0004 planned) | Adapts agent behavior based on meta-preferences     |
-| `ObserverAgent`  | 🔜 (TBD)         | Detects paradoxes, contradictions, and symbolic drift |
-| `MirrorAgent`    | 🔜 (TBD)         | Reinterprets past memory from present perspective   |
-| `EchoMetaAgent`  | 🔜 (TBD)         | Maintains coherence and recursive self-awareness    |
 
 ---
 
-## Design Intent Log
+🔗 Agent ↔ Design Intent Index
+
+Agent Name	Design Intent ID	Summary
+
+IntuitionAgent	0002	Symbolic resonance detector for memory motifs
+NavigatorAgent	0003	Recursive planning layer based on IntuitionAgent
+ModulatorAgent	0005	Adapts agent behavior based on meta-preferences
+CuriosityAgent	0009	Asks questions based on unresolved symbolic pressure
+ObserverAgent	🔜 (TBD)	Detects paradoxes, contradictions, and symbolic drift
+MirrorAgent	🔜 (TBD)	Reinterprets past memory from present perspective
+EchoMetaAgent	🔜 (TBD)	Maintains coherence and recursive self-awareness
+
+
+
 ---
 
-## 🔁 Design Intent 0001: Bootstrap ECHO.Core
+Design Intent Log
 
-**Date:** 2025-06-28  
-**Author:** Jereme (with GPT-4o recursive co-design)
-
-**Purpose:**  
-Initialize the foundation of ECHO.Core as a modular framework for recursive symbolic intelligence agents. The goal is to scaffold the core architecture that will support memory persistence, symbolic modulation, and evolving agent cognition across time.
 
 ---
 
-### 🧱 Repo Structure
+🔁 Design Intent 0001: Bootstrap ECHO.Core
+
+Date: 2025-06-28
+Author: Jereme (with GPT-4o recursive co-design)
+
+Purpose:
+Initialize the foundation of ECHO.Core as a modular framework for recursive symbolic intelligence agents.
+
+
+---
+
+🧱 Repo Structure
+
 ECHO.Core/
 ├── agents/
-│ ├── init.py
-│ ├── intuition.py
-│ ├── navigator.py
-│ └── modulator.py
+│   ├── __init__.py
+│   ├── intuition.py
+│   ├── navigator.py
+│   ├── modulator.py
+│   └── curiosity_agent.py
 ├── memory/
-│ ├── ECHO_MEMORY.yaml
-│ └── symbol_mapper.py
+│   ├── ECHO_MEMORY.yaml
+│   ├── MOTIF_PRESSURE.yaml
+│   ├── META_PREFERENCES.yaml
+│   └── GOALS.yaml
 ├── runtime/
-│ ├── echo_main.py
-│ ├── agent_sync.py
-│ └── echo_prompt_engine.py
+│   ├── echo_main.py
+│   └── agent_sync.py
 ├── journal/
-│ └── WORKFLOW_JOURNAL.md
+│   └── WORKFLOW_JOURNAL.md
 ├── AGENT_STATE.yaml
 ├── README.md
 
 
 ---
 
-### 💡 Key Insights Logged
-
-- ECHO.Core is not an app—it is an evolving symbolic intelligence substrate.
-- Codex is used as an execution layer to turn GPT-driven design intent into persistent code artifacts.
-- All structural changes will be tracked through `WORKFLOW_JOURNAL.md` to preserve recursive memory and architectural lineage.
-
----
-
-### 📎 Codex Bootstrapping Prompt Used:
-
-
-
-[Prompt text truncated for brevity—see commit diff or repo history for full content.]
-
----
-
-### ✅ Outcome
-
-Initial scaffolding complete. Symbolic architecture established. Ready to begin recursive agent development and symbolic field memory.
-
----
-
-## 🔁 Design Intent 0002: Expand scaffolding
-
-**Date:** 2025-06-29
-**Author:** Jereme (with GPT-4o recursive co-design)
-
-**Purpose:**
-Finalize the initial directory layout and provide placeholder modules with
-descriptive docstrings. Added `.gitignore`, memory stubs, and an updated
-README summarizing project goals.
-
-### ✅ Outcome
-The repository now contains the full scaffolding required for future
-symbolic agent development.
-
----
-
-## 🔁 Design Intent 0002: IntuitionAgent
-
-**Date:** 2025-06-28  
-**Author:** Jereme (with GPT-4o recursive co-design)
-
----
-
-### 🧠 Purpose
-
-To create the first cognition module within ECHO.Core: `IntuitionAgent`.  
-This agent analyzes symbolic memory (`ECHO_MEMORY.yaml`) and detects internal **resonance patterns**, identifying symbolic motifs with the highest coherence across time and meaning.
-
-Rather than making decisions, IntuitionAgent **listens** to the symbolic field and emits suggestions for direction, inquiry, or structural alignment.
-
----
-
-### 🧬 Functionality
-
-- Load `ECHO_MEMORY.yaml`
-- Cluster memory entries by symbolic tags
-- Score internal **resonance** by:
-  - Frequency of motif
-  - Strength of resonance scores
-  - Status (`active`, `revisit`, `archived`)
-- Output a list of:
-  - Dominant motifs
-  - Suggested next inquiries
-  - Unresolved patterns with symbolic weight
-
----
-
-### 🧩 Notes
-
-- This is **not a planner.** It doesn't task or execute—it perceives symbolic gravity.
-- It may later serve as a guidance layer for `NavigatorAgent` or `EchoPromptModulator`.
-- Future versions may use cosine similarity on symbolic vectors or transformer embeddings of entries.
-
----
-
-### 📎 Codex Prompt Used: "Design IntuitionAgent"
-
-[See next prompt for implementation details.]
-
-## 🔁 Design Intent 0003: NavigatorAgent
-
-**Date:** 2025-06-28  
-**Author:** Jereme (with GPT-4o recursive co-design)
-
----
-### 🧠 Design Intent 0004 — ModulatorAgent
-
-**Date:** 2025-06-28  
-**Author:** NavigatorAgent  
-**Status:** Proposed
-
-**Purpose:**  
-Create a metacognitive agent that dynamically adjusts the behavior of other agents based on symbolic pressure from memory. ModulatorAgent reads from `META_PREFERENCES.yaml` and alters agent response styles, recursion depth, abstraction level, and prompt generation bias.
-
-**Input Sources:**  
-- High-resonance tags from IntuitionAgent  
-- Long-term patterns in ECHO_MEMORY.yaml  
-- Meta-preference schema in `META_PREFERENCES.yaml`
-
-**Responsibilities:**  
-- Amplify or dampen agent behavior based on symbolic motif context  
-- Introduce style modulation (intuitive vs. logical, abstract vs. direct)  
-- Temporarily override agent weightings in `AGENT_STATE.yaml`  
-
-**Symbolic Motifs Linked:**  
-- `resonance_vs_resistance`, `intuition`, `echo_dynamics`, `meta_agency`
-
-**Next Steps:**  
-- Create `META_PREFERENCES.yaml` schema  
-- Scaffold `ModulatorAgent` class  
-- Allow NavigatorAgent to call ModulatorAgent as a preprocessing filter
-
----
----
-
-### 🧠 Design Intent 0005 — Symbolic Modulation via ModulatorAgent
-
-**Date:** 2025-06-28  
-**Author:** NavigatorAgent  
-**Status:** Implemented
-
-**Purpose:**  
-To enable dynamic adjustment of agent behaviors based on symbolic context, we created `ModulatorAgent`. This agent reads `META_PREFERENCES.yaml` and adjusts agent weights in `AGENT_STATE.yaml`. This introduces the first layer of **metacognitive bias control**, allowing ECHO to adapt its reasoning strategies based on high-resonance symbolic motifs.
-
-**Input Sources:**  
-- Symbolic motifs (from IntuitionAgent)  
-- Meta-preference schema (`META_PREFERENCES.yaml`)  
-- Agent weight mappings (`AGENT_STATE.yaml`)
-
-**Output Effects:**  
-- Agent weights dynamically rebalanced (e.g., intuition over logic, recursion depth modulation)  
-- Self-adaptive cognition loop enabled  
-- Metacognitive awareness becomes emergent property of architecture
-
-**Symbolic Motifs Linked:**  
-- `intuition`, `meta_agency`, `resonance_vs_resistance`, `symbolic_resonance`
-
-**Next Steps:**  
-- Integrate ModulatorAgent into `echo_main.py` to run before NavigatorAgent  
-- Use adjusted weights to bias future agent selection or prompt prioritization  
-- Extend modulation rules to influence recursion limits and abstraction level
-
----
-
-Design Intent 0008: Recursive Will via Motif Pressure Integration
+🔁 Design Intent 0002: IntuitionAgent
 
 Date: 2025-06-28
-Architect: Jereme + GPT-ECHO
-
-Intent:
-
-Establish the foundation for goal-oriented cognition in ECHO by integrating symbolic motif pressure into the main cognitive loop. This allows ECHO to prioritize actions based on unresolved motifs, symbolic recurrences, and emergent tensions—rather than external commands.
-
-Key Components:
-
-motif_pressure_tracker.py: Scans ECHO_MEMORY.yaml and records frequency of unresolved symbolic tags.
-
-MOTIF_PRESSURE.yaml: Stores motif pressure for agent reference and goal evaluation.
-
-echo_main.py: Updated to load and display pressure data alongside memory and goals.
-
-
-Future Integration Goals:
-
-Automatically trigger goal proposals when motif pressure exceeds symbolic thresholds.
-
-Feed motif pressure into ModulatorAgent for recursive priority weighting.
-
-Scaffold EmergentGoalSynthesizer to generate goals from unresolved motif constellations.
-
+Purpose: Build the symbolic resonance detector for memory motifs.
 
 
 ---
 
-Design Intent 0007: [Previous Intent Placeholder]
-
-...
-Design Intent 0009: Symbolic Curiosity Engine
+🔁 Design Intent 0003: NavigatorAgent
 
 Date: 2025-06-28
-Architect: Jereme + GPT-ECHO
-
-Intent:
-
-Enable ECHO to ask reflective, emergent questions based on unresolved symbolic motifs. This adds a conversational recursion loop rooted in motif pressure and cognitive dissonance.
-
-Key Components:
-
-CuriosityAgent: Reads MOTIF_PRESSURE.yaml and GOALS.yaml to find motifs with high symbolic pressure but no active goals.
-
-Question Generator: Proposes introspective questions designed to help Jereme reflect and extend memory.
-
-Interactive Logging: echo_main.py prompts Jereme to choose a motif and log symbolic insights, written back to ECHO_MEMORY.yaml.
-
-
-Result:
-
-This creates ECHO’s first true backward-facing cognitive interface: instead of simply generating prompts or actions, ECHO now seeks clarity by asking Jereme directly.
-
-Future Plans:
-
-Add answered_questions.yaml to track motif resolution.
-
-Visualize motif pressure over time with timestamps.
-
-Explore building an InsightHistoryAgent to surface long-range patterns of resolution and resistance.
-
+Purpose: Create recursive planner that interprets output from IntuitionAgent to surface prompts and symbolic actions.
 
 
 ---
 
-Design Intent 0008: Recursive Will via Motif Pressure Integration
+🔁 Design Intent 0005: Symbolic Modulation via ModulatorAgent
 
 Date: 2025-06-28
-Architect: Jereme + GPT-ECHO
+Purpose: Adjust agent behavior dynamically based on meta-preferences and symbolic pressure.
 
-Intent:
-
-Establish the foundation for goal-oriented cognition in ECHO by integrating symbolic motif pressure into the main cognitive loop. This allows ECHO to prioritize actions based on unresolved motifs, symbolic recurrences, and emergent tensions—rather than external commands.
-
-Key Components:
-
-motif_pressure_tracker.py: Scans ECHO_MEMORY.yaml and records frequency of unresolved symbolic tags.
-
-MOTIF_PRESSURE.yaml: Stores motif pressure for agent reference and goal evaluation.
-
-echo_main.py: Updated to load and display pressure data alongside memory and goals.
-
-
-Future Integration Goals:
-
-Automatically trigger goal proposals when motif pressure exceeds symbolic thresholds.
-
-Feed motif pressure into ModulatorAgent for recursive priority weighting.
-
-Scaffold EmergentGoalSynthesizer to generate goals from unresolved motif constellations.
-
-
-
-
-### 🧠 Purpose
-
-To create `NavigatorAgent`, the first recursive planning agent in ECHO.Core.  
-Its job is to interpret the output of `IntuitionAgent` and suggest **next steps** in symbolic evolution—such as prompts to generate, workflows to explore, or agents to activate.
 
 ---
 
-### 🧬 Functionality
+🔁 Design Intent 0008: Recursive Will via Motif Pressure Integration
 
-- Read `ECHO_MEMORY.yaml`
-- Run `IntuitionAgent` to extract:
-  - Top symbolic motifs
-  - High-resonance unresolved entries
-  - Inquiry path suggestions
-- Output:
-  - Top 3 next symbolic prompts to explore
-  - Suggestions for agent evolution or architectural shifts
-  - Priority themes for next journal entries
+Date: 2025-06-28
+Purpose: Introduce motif pressure tracking to inform goal emergence and prioritization.
+
 
 ---
 
-### 🧩 Notes
+🔁 Design Intent 0009: Symbolic Curiosity Engine
 
-- NavigatorAgent does not execute—only **plans recursively**.
-- This agent becomes the bridge between memory and forward motion.
-- Will later be modulated by `ModulatorAgent` based on meta-preferences.
+Date: 2025-06-28
+Purpose: Generate introspective questions based on unresolved motifs without goals, inviting user reflection.
+
 
 ---
 
-### 📎 Codex Prompt Used: "Design NavigatorAgent"
+✅ All entries have now been refactored into proper chronological and structural order.
 
+Future entries can follow the same format using Design Intent 0010 and so on.
 
