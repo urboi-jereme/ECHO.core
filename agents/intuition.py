@@ -14,6 +14,10 @@ This agent does not make decisions—it listens to the field and reflects its st
 import yaml
 from collections import defaultdict
 from operator import itemgetter
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from echo_logger import log_agent_activation
 
 class IntuitionAgent:
