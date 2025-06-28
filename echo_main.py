@@ -1,61 +1,57 @@
 print("✅ echo_main.py is running...")
 
-import sys
+from agents.intuition import IntuitionAgent
+from agents.navigator import NavigatorAgent
+from agents.curiosity_agent import CuriosityAgent
+from memory.goals import load_goals
+import yaml
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from datetime import datetime
-yaml = __import__("yaml")
+# Load active goals
+goals = load_goals()
+print("🎯 Active Goals:")
+for g in goals:
+    if g['status'] == 'active':
+        print(f"• {g['goal']} (tags: {', '.join(g['trigger_tags'])})")
+print()
 
-# Ensure root path is in sys.path so echo_logger is importable from submodules
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
-if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
+# Load motif pressure
+PRESSURE_PATH = os.path.join(os.path.dirname(__file__), 'memory/MOTIF_PRESSURE.yaml')
+if os.path.exists(PRESSURE_PATH):
+    with open(PRESSURE_PATH, 'r') as f:
+        motif_data = yaml.safe_load(f)
+        motif_pressure = motif_data.get('motif_pressure', {})
+else:
+    motif_pressure = {}
+    print("⚠️  MOTIF_PRESSURE.yaml not found. Run motif_pressure_tracker.py first.")
 
-LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
-AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+print("\n💡 Motif Pressure Levels:")
+for tag, count in sorted(motif_pressure.items(), key=lambda x: -x[1]):
+    print(f"• {tag}: {count}")
+print()
 
-def _init_log():
-    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
-    if not os.path.exists(LOG_PATH):
-        with open(LOG_PATH, "w") as f:
-            f.write("# 🧠 ECHO Activity Log\n\n")
+# Initialize agents
+intuition = IntuitionAgent()
+navigator = NavigatorAgent()
+curiosity = CuriosityAgent()
 
-def _logging_enabled():
-    try:
-        with open(AGENT_STATE_PATH, "r") as f:
-            state = yaml.safe_load(f)
-            return state.get("log_on_activation", True)
-    except Exception:
-        return True  # Default to logging if file missing or corrupted
+# Generate outputs
+print("🔮 Resonant Tags:")
+for tag in intuition.get_resonant_tags():
+    print(f"• {tag['tag']} (resonance: {tag['avg_resonance']:.2f}, count: {tag['count']})")
+print()
 
-def log_agent_activation(agent_name: str, action: str = "activated"):
-    if not _logging_enabled():
-        return
-    _init_log()
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    entry = f"- [{timestamp}] **{agent_name}** {action}\n"
-    with open(LOG_PATH, "a") as f:
-        f.write(entry)
+print("🧭 Proposed Prompts:")
+for p in navigator.get_next_prompt_targets():
+    print(f"• {p}")
+print()
 
-def log_custom_event(event: str):
-    _init_log()
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    entry = f"- [{timestamp}] {event}\n"
-    with open(LOG_PATH, "a") as f:
-        f.write(entry)
+print("🏗️  Architectural Suggestions:")
+for a in navigator.get_next_architectural_actions():
+    print(f"• {a}")
+print()
 
-# Auto-inject logging into agent __init__ if imported in agent context
-if any("agents" in arg for arg in sys.argv):
-    import inspect
-    import builtins
-
-    def log_init_patch(cls):
-        orig_init = cls.__init__
-        def new_init(self, *args, **kwargs):
-            log_agent_activation(cls.__name__)
-            orig_init(self, *args, **kwargs)
-        cls.__init__ = new_init
-        return cls
-
-    builtins.__ECHO_AUTO_LOG_PATCH__ = log_init_patch
+print("🤔 Curiosity Questions:")
+for q in curiosity.generate_questions():
+    print(f"• {q}")
+print()
