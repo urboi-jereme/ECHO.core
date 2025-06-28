@@ -1,71 +1,58 @@
-import time 
-import os 
-from agents.intuition 
-import IntuitionAgent from agents.navigator import NavigatorAgent from agents.modulator import ModulatorAgent from agents.curiosity_agent import CuriosityAgent from runtime.goal_engine import GoalEngine
+# echo_daemon.py
+import time
+import os
+import sys
+import yaml
+from datetime import datetime
+from agents.intuition import IntuitionAgent
+from agents.navigator import NavigatorAgent
+from agents.curiosity_agent import CuriosityAgent
+from echo_logger import log_custom_event
 
-from rich.console import Console console = Console()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MEMORY_DIR = os.path.join(BASE_DIR, "memory")
+PRESSURE_PATH = os.path.join(MEMORY_DIR, "MOTIF_PRESSURE.yaml")
+GOALS_PATH = os.path.join(MEMORY_DIR, "GOALS.yaml")
+INTERVAL_SECONDS = 600  # 10 minutes
 
-BASE_PATH = os.path.dirname(os.path.abspath(file)) LOG_FILE = os.path.join(BASE_PATH, "../journal/COGNITION_LOG.md")
+def load_yaml(path):
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r") as f:
+        return yaml.safe_load(f) or {}
 
-def log_to_file(entry): with open(LOG_FILE, "a") as f: f.write(entry + "\n")
+def daemon_loop():
+    log_custom_event("🌀 ECHO Daemon started")
 
-def echo_loop(interval=600, silent=False): if not silent: console.print("[bold cyan]\n🔁 ECHO Daemon Active — Autonomous Cognitive Loop[/bold cyan]")
+    while True:
+        timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+        log_custom_event(f"🔁 Daemon cycle at {timestamp}")
 
-intuition = IntuitionAgent()
-modulator = ModulatorAgent()
-navigator = NavigatorAgent()
-curiosity = CuriosityAgent()
-goal_engine = GoalEngine()
+        intuition = IntuitionAgent()
+        navigator = NavigatorAgent()
+        curiosity = CuriosityAgent()
 
-while True:
-    timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-    log_entry = f"## 🧠 ECHO Cycle @ {timestamp}\n"
+        # Load memory signals
+        pressure_data = load_yaml(PRESSURE_PATH)
+        goal_data = load_yaml(GOALS_PATH)
 
-    # Update motif pressure
-    motif_data = intuition.get_tag_stats()
-    modulator.modulate_weights(motif_data)
+        top_motifs = intuition.get_resonant_tags()[:3]
+        prompt_targets = navigator.get_next_prompt_targets()
+        questions = curiosity.generate_questions()
 
-    # Ask a question if appropriate
-    question = curiosity.ask_question()
-    if question:
-        if not silent:
-            console.print(f"[bold yellow]Curiosity:[/bold yellow] {question}")
-        log_entry += f"**Curiosity Question:** {question}\n"
+        log_custom_event("🧠 Top Resonant Motifs:")
+        for motif in top_motifs:
+            log_custom_event(f"• {motif['tag']} (resonance: {motif['avg_resonance']:.2f})")
 
-    # Propose goals if motif pressure suggests it
-    proposed = goal_engine.propose_goals_from_pressure()
-    if proposed:
-        if not silent:
-            console.print("[bold green]📌 New Goals Proposed:[/bold green]")
-        log_entry += "**Proposed Goals:**\n"
-        for motif, goal in proposed.items():
-            line = f"• {motif}: {goal}"
-            log_entry += line + "\n"
-            if not silent:
-                console.print(line)
+        log_custom_event("🎯 Prompt Suggestions:")
+        for p in prompt_targets:
+            log_custom_event(f"• {p}")
 
-    # Plan next steps via Navigator
-    plan = navigator.plan_next_steps()
-    if not silent:
-        console.print("\n[bold blue]🧭 Navigator Suggestions:[/bold blue]")
-    log_entry += "**Navigator Suggestions:**\n"
-    for p in plan['prompts']:
-        log_entry += f"• {p}\n"
-        if not silent:
-            console.print(f"• {p}")
-    for a in plan['actions']:
-        log_entry += f"→ {a}\n"
-        if not silent:
-            console.print(f"[dim]→ {a}[/dim]")
+        log_custom_event("❓ Curiosity Questions:")
+        for q in questions:
+            log_custom_event(f"• {q}")
 
-    log_entry += "\n---\n"
-    log_to_file(log_entry)
+        time.sleep(INTERVAL_SECONDS)
 
-    if not silent:
-        console.print(f"\n⏱️ Waiting {interval}s until next cycle...\n")
-    time.sleep(interval)
-
-if name == "main": import argparse parser = argparse.ArgumentParser(description="Run ECHO daemon.") parser.add_argument("--silent", action="store_true", help="Run without console output") parser.add_argument("--interval", type=int, default=900, help="Time between cycles in seconds") args = parser.parse_args()
-
-echo_loop(interval=args.interval, silent=args.silent)
-
+if __name__ == "__main__":
+    daemon_loop()
