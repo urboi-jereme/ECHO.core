@@ -56,3 +56,19 @@ ECHO.Core/
 Initial scaffolding complete. Symbolic architecture established. Ready to begin recursive agent development and symbolic field memory.
 
 ---
+
+## 🔁 Design Intent 0002: Expand scaffolding
+
+**Date:** 2025-06-29
+**Author:** Jereme (with GPT-4o recursive co-design)
+
+**Purpose:**
+Finalize the initial directory layout and provide placeholder modules with
+descriptive docstrings. Added `.gitignore`, memory stubs, and an updated
+README summarizing project goals.
+
+### ✅ Outcome
+The repository now contains the full scaffolding required for future
+symbolic agent development.
+
+---
