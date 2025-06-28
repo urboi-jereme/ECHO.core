@@ -14,6 +14,7 @@ This agent does not make decisions—it listens to the field and reflects its st
 import yaml
 from collections import defaultdict
 from operator import itemgetter
+from echo_logger import log_agent_activation
 
 class IntuitionAgent:
     def __init__(self, memory_file="memory/ECHO_MEMORY.yaml"):
