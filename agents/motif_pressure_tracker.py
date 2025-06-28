@@ -21,7 +21,8 @@ def compute_motif_pressure():
         return {}
 
     with open(MEMORY_FILE, "r") as f:
-        memory = yaml.safe_load(f) or []
+        data = yaml.safe_load(f) or {}
+        memory = data.get("echo_memory", [])
 
     pressure = {}
 
@@ -35,7 +36,7 @@ def compute_motif_pressure():
 
 def save_pressure(pressure):
     with open(PRESSURE_FILE, "w") as f:
-        yaml.dump(pressure, f, sort_keys=False)
+        yaml.dump({"motif_pressure": pressure}, f, sort_keys=False)
     print(f"✅ Motif pressure written to {PRESSURE_FILE}")
 
 if __name__ == "__main__":

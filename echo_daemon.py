@@ -33,7 +33,8 @@ def daemon_loop():
         curiosity = CuriosityAgent()
 
         # Load memory signals
-        pressure_data = load_yaml(PRESSURE_PATH)
+        pressure_raw = load_yaml(PRESSURE_PATH)
+        pressure_data = pressure_raw.get("motif_pressure", pressure_raw)
         goal_data = load_yaml(GOALS_PATH)
 
         top_motifs = intuition.get_resonant_tags()[:3]

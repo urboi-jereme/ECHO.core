@@ -17,7 +17,8 @@ def load_yaml(file_name):
         return {}
 
 def show_motif_pressure():
-    pressure = load_yaml("MOTIF_PRESSURE.yaml")
+    data = load_yaml("MOTIF_PRESSURE.yaml")
+    pressure = data.get("motif_pressure", data)
     if not pressure:
         console.print("[bold red]No motif pressure data found.[/bold red]")
         return
