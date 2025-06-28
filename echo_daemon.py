@@ -7,6 +7,7 @@ from datetime import datetime
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity_agent import CuriosityAgent
+from agents.modulator import ModulatorAgent
 from echo_logger import log_custom_event
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -31,11 +32,16 @@ def daemon_loop():
         intuition = IntuitionAgent()
         navigator = NavigatorAgent()
         curiosity = CuriosityAgent()
+        modulator = ModulatorAgent()
 
         # Load memory signals
         pressure_raw = load_yaml(PRESSURE_PATH)
         pressure_data = pressure_raw.get("motif_pressure", pressure_raw)
         goal_data = load_yaml(GOALS_PATH)
+
+        # Run modulator to adapt agent weights
+        modulator.run()
+        log_custom_event("🔧 ModulatorAgent updated agent weights")
 
         top_motifs = intuition.get_resonant_tags()[:3]
         prompt_targets = navigator.get_next_prompt_targets()
