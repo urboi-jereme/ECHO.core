@@ -1,16 +1,15 @@
 # File: agents/motif_pressure_tracker.py
 
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from echo_logger import log_agent_activation
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from memory.goals import load_goals, update_goal_status
 
 import yaml
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from echo_logger import log_agent_activation
-
 
 MEMORY_FILE = "memory/ECHO_MEMORY.yaml"
 PRESSURE_FILE = "memory/MOTIF_PRESSURE.yaml"
