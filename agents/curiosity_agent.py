@@ -68,3 +68,38 @@ class CuriosityAgent:
             print(f"[CuriosityAgent] Questions logged to {self.curiosity_log_path}")
         except Exception as e:
             print(f"[CuriosityAgent] Error logging questions: {e}")
+
+    def log_user_response(self, question, response):
+        """Persist a user's response to a curiosity question."""
+        print(f"[CuriosityAgent] Logging response for motif '{question.get('motif')}'...")
+        try:
+            if os.path.exists(self.curiosity_log_path):
+                with open(self.curiosity_log_path, "r") as f:
+                    data = yaml.safe_load(f) or {}
+            else:
+                data = {}
+
+            questions = data.setdefault("questions", [])
+
+            # try to find matching question by timestamp and text
+            match = None
+            for q in questions:
+                if (
+                    q.get("timestamp") == question.get("timestamp")
+                    and q.get("question_text") == question.get("question_text")
+                ):
+                    match = q
+                    break
+
+            if match:
+                match["user_response"] = response
+            else:
+                new_entry = dict(question)
+                new_entry["user_response"] = response
+                questions.append(new_entry)
+
+            with open(self.curiosity_log_path, "w") as f:
+                yaml.dump(data, f, sort_keys=False)
+            print(f"[CuriosityAgent] Response logged to {self.curiosity_log_path}")
+        except Exception as e:
+            print(f"[CuriosityAgent] Error logging response: {e}")
