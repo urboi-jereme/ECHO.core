@@ -3,6 +3,23 @@
 
 ---
 
+## 🔗 Agent ↔ Design Intent Index
+
+| Agent Name       | Design Intent ID | Summary                                              |
+|------------------|------------------|------------------------------------------------------|
+| `IntuitionAgent` | 0002             | Symbolic resonance detector for memory motifs       |
+| `NavigatorAgent` | 0003             | Recursive planning layer based on IntuitionAgent    |
+| `ModulatorAgent` | 🔜 (0004 planned) | Adapts agent behavior based on meta-preferences     |
+| `ObserverAgent`  | 🔜 (TBD)         | Detects paradoxes, contradictions, and symbolic drift |
+| `MirrorAgent`    | 🔜 (TBD)         | Reinterprets past memory from present perspective   |
+| `EchoMetaAgent`  | 🔜 (TBD)         | Maintains coherence and recursive self-awareness    |
+
+---
+
+## Design Intent Log
+
+---
+
 ## 🔁 Design Intent 0001: Bootstrap ECHO.Core
 
 **Date:** 2025-06-28  
