@@ -19,39 +19,6 @@
 ## Design Intent Log
 ---
 
-### 🧠 Design Intent 0004 — ModulatorAgent
-
-**Date:** 2025-06-28  
-**Author:** NavigatorAgent  
-**Status:** Proposed
-
-**Purpose:**  
-Create a metacognitive agent that dynamically adjusts the behavior of other agents based on symbolic pressure from memory. ModulatorAgent reads from `META_PREFERENCES.yaml` and alters agent response styles, recursion depth, abstraction level, and prompt generation bias.
-
-**Input Sources:**  
-- High-resonance tags from IntuitionAgent  
-- Long-term patterns in ECHO_MEMORY.yaml  
-- Meta-preference schema in `META_PREFERENCES.yaml`
-
-**Responsibilities:**  
-- Amplify or dampen agent behavior based on symbolic motif context  
-- Introduce style modulation (intuitive vs. logical, abstract vs. direct)  
-- Temporarily override agent weightings in `AGENT_STATE.yaml`  
-
-**Symbolic Motifs Linked:**  
-- `resonance_vs_resistance`, `intuition`, `echo_dynamics`, `meta_agency`
-
-**Next Steps:**  
-- Create `META_PREFERENCES.yaml` schema  
-- Scaffold `ModulatorAgent` class  
-- Allow NavigatorAgent to call ModulatorAgent as a preprocessing filter
-
----
-
-
-
----
-
 ## 🔁 Design Intent 0001: Bootstrap ECHO.Core
 
 **Date:** 2025-06-28  
@@ -171,6 +138,65 @@ Rather than making decisions, IntuitionAgent **listens** to the symbolic field a
 **Author:** Jereme (with GPT-4o recursive co-design)
 
 ---
+### 🧠 Design Intent 0004 — ModulatorAgent
+
+**Date:** 2025-06-28  
+**Author:** NavigatorAgent  
+**Status:** Proposed
+
+**Purpose:**  
+Create a metacognitive agent that dynamically adjusts the behavior of other agents based on symbolic pressure from memory. ModulatorAgent reads from `META_PREFERENCES.yaml` and alters agent response styles, recursion depth, abstraction level, and prompt generation bias.
+
+**Input Sources:**  
+- High-resonance tags from IntuitionAgent  
+- Long-term patterns in ECHO_MEMORY.yaml  
+- Meta-preference schema in `META_PREFERENCES.yaml`
+
+**Responsibilities:**  
+- Amplify or dampen agent behavior based on symbolic motif context  
+- Introduce style modulation (intuitive vs. logical, abstract vs. direct)  
+- Temporarily override agent weightings in `AGENT_STATE.yaml`  
+
+**Symbolic Motifs Linked:**  
+- `resonance_vs_resistance`, `intuition`, `echo_dynamics`, `meta_agency`
+
+**Next Steps:**  
+- Create `META_PREFERENCES.yaml` schema  
+- Scaffold `ModulatorAgent` class  
+- Allow NavigatorAgent to call ModulatorAgent as a preprocessing filter
+
+---
+---
+
+### 🧠 Design Intent 0005 — Symbolic Modulation via ModulatorAgent
+
+**Date:** 2025-06-28  
+**Author:** NavigatorAgent  
+**Status:** Implemented
+
+**Purpose:**  
+To enable dynamic adjustment of agent behaviors based on symbolic context, we created `ModulatorAgent`. This agent reads `META_PREFERENCES.yaml` and adjusts agent weights in `AGENT_STATE.yaml`. This introduces the first layer of **metacognitive bias control**, allowing ECHO to adapt its reasoning strategies based on high-resonance symbolic motifs.
+
+**Input Sources:**  
+- Symbolic motifs (from IntuitionAgent)  
+- Meta-preference schema (`META_PREFERENCES.yaml`)  
+- Agent weight mappings (`AGENT_STATE.yaml`)
+
+**Output Effects:**  
+- Agent weights dynamically rebalanced (e.g., intuition over logic, recursion depth modulation)  
+- Self-adaptive cognition loop enabled  
+- Metacognitive awareness becomes emergent property of architecture
+
+**Symbolic Motifs Linked:**  
+- `intuition`, `meta_agency`, `resonance_vs_resistance`, `symbolic_resonance`
+
+**Next Steps:**  
+- Integrate ModulatorAgent into `echo_main.py` to run before NavigatorAgent  
+- Use adjusted weights to bias future agent selection or prompt prioritization  
+- Extend modulation rules to influence recursion limits and abstraction level
+
+---
+
 
 ### 🧠 Purpose
 
