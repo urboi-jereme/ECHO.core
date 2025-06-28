@@ -10,8 +10,12 @@ Its job is to analyze symbolic memory through IntuitionAgent and determine:
 
 It does not execute—it surfaces the next recursive decision points.
 """
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from agents.intuition import IntuitionAgent
+
 
 class NavigatorAgent:
     def __init__(self, memory_file="memory/ECHO_MEMORY.yaml"):
