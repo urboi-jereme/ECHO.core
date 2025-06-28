@@ -1,0 +1,6 @@
+IntuitionAgent:
+  weight: 0.9
+ModulatorAgent:
+  weight: 1.0
+NavigatorAgent:
+  weight: 0.75

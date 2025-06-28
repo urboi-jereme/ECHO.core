@@ -1,0 +1,16 @@
+
+modulation_rules:
+  - agent: IntuitionAgent
+    weight: 0.9
+    trigger_tags: [intuition, symbolic_resonance]
+    rationale: "Increase reliance on intuitive inference when symbolic coherence is strong."
+
+  - agent: NavigatorAgent
+    weight: 0.75
+    trigger_tags: [meta_agency, recursion_strategy]
+    rationale: "Balance strategic recursion with emergent motifs."
+
+  - agent: ModulatorAgent
+    weight: 1.0
+    trigger_tags: [meta_modulation]
+    rationale: "Ensure metacognitive modulation remains dominant during architectural adaptation."
