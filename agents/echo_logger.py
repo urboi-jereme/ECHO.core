@@ -1,18 +1,22 @@
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-
 from datetime import datetime
 yaml = __import__("yaml")
 
-# Ensure root path is in sys.path so echo_logger is importable from submodules
+# Root dir setup
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
 AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+
+# Optional .env loading for toggles
+try:
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(ROOT_DIR, ".env"))
+except ImportError:
+    pass  # .env optional
 
 def _init_log():
     os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
@@ -28,12 +32,17 @@ def _logging_enabled():
     except Exception:
         return True  # Default to logging if file missing or corrupted
 
-def log_agent_activation(agent_name: str, action: str = "activated"):
+def log_agent_activation(agent_name: str, action: str = "activated", reason: str = None, tag: str = None, motif: str = None):
     if not _logging_enabled():
         return
     _init_log()
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-    entry = f"- [{timestamp}] **{agent_name}** {action}\n"
+    metadata = []
+    if reason: metadata.append(f"Reason: {reason}")
+    if tag: metadata.append(f"Tag: {tag}")
+    if motif: metadata.append(f"Motif: {motif}")
+    meta_str = f" ({' | '.join(metadata)})" if metadata else ""
+    entry = f"- [{timestamp}] **{agent_name}** {action}{meta_str}\n"
     with open(LOG_PATH, "a") as f:
         f.write(entry)
 
@@ -44,9 +53,15 @@ def log_custom_event(event: str):
     with open(LOG_PATH, "a") as f:
         f.write(entry)
 
-# Auto-inject logging into agent __init__ if imported in agent context
-if any("agents" in arg for arg in sys.argv):
-    import inspect
+# 🧠 Optional patch injection
+def _should_patch():
+    if os.getenv("ECHO_FORCE_PATCH") == "1":
+        return True
+    if os.getenv("ECHO_DISABLE_PATCH") == "1":
+        return False
+    return any("agents" in arg and not arg.endswith("test.py") for arg in sys.argv)
+
+if _should_patch():
     import builtins
 
     def log_init_patch(cls):
