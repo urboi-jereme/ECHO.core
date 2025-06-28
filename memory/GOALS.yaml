@@ -1,9 +1,21 @@
 goals:
+  - goal: Resolve persistent symbolic tensions
+    trigger_tags: [resonance_vs_resistance, threshold_of_self, recursion_block]
+    success_criteria: >
+      Motifs with more than 3 unresolved recurrences are synthesized or deprecated with insight
+    source: emergent_pressure
+    status: active
 
-goal: Resolve persistent symbolic tensions trigger_tags: [resonance_vs_resistance, threshold_of_self, recursion_block] success_criteria: > Motifs with more than 3 unresolved recurrences are synthesized or deprecated with insight source: emergent_pressure status: active
+  - goal: Achieve agentic modulation via motif coherence
+    trigger_tags: [meta_agency, modulation, symbolic_weighting]
+    success_criteria: >
+      ModulatorAgent adjusts at least 3 weights based on active motifs
+    source: architectural_alignment
+    status: active
 
-goal: Achieve agentic modulation via motif coherence trigger_tags: [meta_agency, modulation, symbolic_weighting] success_criteria: > ModulatorAgent adjusts at least 3 weights based on active motifs source: architectural_alignment status: active
-
-goal: Create new symbolic motifs from contradiction trigger_tags: [contradiction, paradox, symbolic_friction] success_criteria: > A new tag is added to ECHO_MEMORY.yaml synthesizing two high-resonance opposing motifs source: unresolved_conflict status: active
-
-
+  - goal: Create new symbolic motifs from contradiction
+    trigger_tags: [contradiction, paradox, symbolic_friction]
+    success_criteria: >
+      A new tag is added to ECHO_MEMORY.yaml synthesizing two high-resonance opposing motifs
+    source: unresolved_conflict
+    status: active
