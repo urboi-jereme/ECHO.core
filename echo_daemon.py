@@ -1,4 +1,7 @@
-import time import os from agents.intuition import IntuitionAgent from agents.navigator import NavigatorAgent from agents.modulator import ModulatorAgent from agents.curiosity_agent import CuriosityAgent from runtime.goal_engine import GoalEngine
+import time 
+import os 
+from agents.intuition 
+import IntuitionAgent from agents.navigator import NavigatorAgent from agents.modulator import ModulatorAgent from agents.curiosity_agent import CuriosityAgent from runtime.goal_engine import GoalEngine
 
 from rich.console import Console console = Console()
 
