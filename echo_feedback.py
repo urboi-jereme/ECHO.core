@@ -2,6 +2,7 @@ import os
 import yaml
 from datetime import datetime
 from collections import defaultdict
+from memory.alignments import log_alignment
 
 MEMORY_PATH = "memory/ECHO_MEMORY.yaml"
 PRESSURE_PATH = "memory/MOTIF_PRESSURE.yaml"
@@ -38,6 +39,18 @@ def log_feedback(motif, response_text):
     memory.append(entry)
     save_memory(memory)
     update_pressure(motif)
+    # record alignment when user feedback mirrors existing motifs
+    log_alignment(
+        interaction={
+            'summary': f"Feedback for {motif}",
+            'content': response_text,
+        },
+        mirrored_tags=[motif],
+        reasoning_path=['feedback', 'motif coherence'],
+        agent_activations=['CuriosityAgent'],
+        score=7.0,
+        notes='Logged from echo_feedback'
+    )
     print(f"✅ Feedback on '{motif}' logged successfully. Motif pressure updated.")
 
 if __name__ == "__main__":
