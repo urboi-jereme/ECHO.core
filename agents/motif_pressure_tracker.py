@@ -1,4 +1,11 @@
+import sys
 import os
+
+# Add the root ECHO.core path to sys.path so echo_logger can be imported
+BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, BASE_PATH)
+
+from echo_logger import log_agent_activation
 import yaml
 from collections import defaultdict
 from echo_logger import log_agent_activation
