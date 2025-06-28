@@ -149,6 +149,19 @@ To run ECHO.Core locally, follow these steps:
     python visualizer.py
     ```
 
+### Running the Notebooks
+
+Jupyter notebooks that interact with ECHO.Core utilities live in the `notebooks/` directory.
+Launch Jupyter from the repository root so relative paths resolve correctly:
+
+```bash
+jupyter notebook
+```
+
+Each notebook imports helper functions from `notebooks/setup.py` to configure paths
+and handle YAML files. Ensure your environment has the `pyyaml` and `matplotlib`
+packages installed.
+
 ## Contribution Guidelines
 
 ECHO.Core is designed to be modular and extensible. Contributions are welcome to expand its capabilities or explore new theoretical avenues. You can contribute by:
