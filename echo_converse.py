@@ -17,6 +17,11 @@ def main():
         curiosity = CuriosityAgent()
         questions = curiosity.generate_questions()
 
+        try:
+            curiosity.log_questions(questions)
+        except Exception as e:
+            print(f"⚠️ Could not log questions: {e}")
+
         if not questions:
             print("❌ No questions generated.")
             return
@@ -37,7 +42,12 @@ def main():
                     continue
 
                 insight = input("Enter your symbolic insight or reflection: ").strip()
-                curiosity.log_user_response(questions[idx], insight)
+                try:
+                    curiosity.log_user_response(questions[idx], insight)
+                except Exception as e:
+                    print(f"⚠️ Failed to log response: {e}")
+                else:
+                    print("✅ Response logged to curiosity log.")
                 log_alignment(
                     interaction={
                         'summary': 'Conversation answer',
@@ -49,7 +59,6 @@ def main():
                     score=5.0,
                     notes='Logged from echo_converse'
                 )
-                print("✅ Response logged.")
 
             except Exception as e:
                 print(f"⚠️ Error during input: {e}")

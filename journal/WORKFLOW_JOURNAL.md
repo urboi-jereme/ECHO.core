@@ -129,6 +129,11 @@ Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automa
 Date: 2025-06-28
 Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
 
+🔁 Design Intent 0012: Curiosity Response Logging
+
+Date: 2025-06-28
+Purpose: Persist user answers to CuriosityAgent questions in CURIOUS_LOG.yaml for later analysis.
+
 
 🔁 Design Intent 0012: Feedback Memory Handling
 
