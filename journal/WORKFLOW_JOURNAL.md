@@ -115,3 +115,10 @@ Future entries can follow the same format using Design Intent 0010 and so on.
 Date: 2025-06-28
 Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automatically each cycle.
 
+---
+
+🔁 Design Intent 0011: Recursive Alignment Logging
+
+Date: 2025-06-28
+Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
+

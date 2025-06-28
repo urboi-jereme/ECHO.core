@@ -1,6 +1,7 @@
 import sys
 import os
 import traceback
+from memory.alignments import log_alignment
 
 # Ensure project root is in sys.path
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
@@ -37,6 +38,17 @@ def main():
 
                 insight = input("Enter your symbolic insight or reflection: ").strip()
                 curiosity.log_user_response(questions[idx], insight)
+                log_alignment(
+                    interaction={
+                        'summary': 'Conversation answer',
+                        'content': insight,
+                    },
+                    mirrored_tags=[questions[idx].get('motif')],
+                    reasoning_path=['conversation', 'question_response'],
+                    agent_activations=['CuriosityAgent'],
+                    score=5.0,
+                    notes='Logged from echo_converse'
+                )
                 print("✅ Response logged.")
 
             except Exception as e:
