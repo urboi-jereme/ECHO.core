@@ -3,7 +3,7 @@ import time
 import os
 import sys
 import yaml
-from datetime import datetime
+from datetime import datetime, timezone
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity_agent import CuriosityAgent
@@ -26,7 +26,7 @@ def daemon_loop():
     log_custom_event("🌀 ECHO Daemon started")
 
     while True:
-        timestamp = datetime.now(datetime.UTC)
+        timestamp = datetime.now(timezone.utc)
         log_custom_event(f"🔁 Daemon cycle at {timestamp}")
 
         intuition = IntuitionAgent()
