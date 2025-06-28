@@ -1,76 +1,46 @@
-# 🧠 AGENTS.md — ECHO.Core Agent Registry
+🧠 AGENTS.md — ECHO.Core Agent Reference
 
-This document defines all symbolic agents active or planned within the `ECHO.Core` architecture. Each agent plays a specific role in the recursive symbolic intelligence ecosystem. Agents may read from shared memory, contribute to symbolic resonance, or orchestrate action across time.
+This document provides an overview of each symbolic agent in ECHO.Core, detailing their responsibilities, inputs, and outputs. This acts as a human- and Codex-readable API for reasoning agents.
 
----
-
-## 🧬 Agent Index
-
-| Agent Name       | Role                                     | Status    |
-|------------------|------------------------------------------|-----------|
-| IntuitionAgent   | Detects symbolic resonance in memory     | ✅ Active |
-| NavigatorAgent   | Plans recursive action from resonance    | ✅ Active |
-| ModulatorAgent   | Adjusts behavior based on meta-preferences | 🔜 Planned |
-| ObserverAgent    | Monitors paradox, contradiction, drift   | 🔜 Planned |
-| MirrorAgent      | Reframes prior memory from new perspective | 🔜 Planned |
-| EchoMetaAgent    | Recursive self-modeler & archetype balancer | 🔜 Planned |
 
 ---
 
-## 🔍 Agent Definitions
+🧠 Active Agents
 
-### 🧠 IntuitionAgent
-**Type:** Perceptual  
-**Location:** `agents/intuition.py`  
-**Purpose:**  
-Analyzes `ECHO_MEMORY.yaml` and surfaces motifs of high symbolic resonance. Clusters tags, scores coherence, and suggests inquiry directions.  
-**Outputs:** Top symbolic motifs, unresolved insight entries, prompt suggestions.
+Agent Name	Description	Inputs	Outputs
 
----
+IntuitionAgent	Detects symbolic resonance in memory	ECHO_MEMORY.yaml	Top motifs ranked by resonance
+NavigatorAgent	Proposes next prompts, actions, and recursion paths	Intuition output	Symbolic prompt list, proposed actions
+ModulatorAgent	Adjusts agent weights based on symbolic and meta-pressure	META_PREFERENCES.yaml, MOTIF_PRESSURE.yaml	Updated AGENT_STATE.yaml
+CuriosityAgent	Generates questions from unresolved motifs	MOTIF_PRESSURE.yaml, GOALS.yaml, motif filters	Question list
+GoalEngine	Loads, stores, and tracks symbolic goal state	GOALS.yaml, AGENT_STATE.yaml	Filtered goals
+MotifPressureTracker	Calculates pressure from unresolved memory motifs	ECHO_MEMORY.yaml	MOTIF_PRESSURE.yaml
 
-### 🧭 NavigatorAgent
-**Type:** Planning  
-**Location:** `agents/navigator.py`  
-**Purpose:**  
-Reads IntuitionAgent’s resonance field and generates next symbolic prompts and architectural actions.  
-**Outputs:** Prompt targets, system evolution suggestions, journal/action hooks.
+
 
 ---
 
-### 🎛️ ModulatorAgent *(planned)*
-**Type:** Meta-preference optimizer  
-**Purpose:**  
-Adapts other agents' behavior based on `META_PREFERENCES.yaml`. Injects cognitive style modulation (e.g., recursion depth, abstraction tolerance).
+🌀 Planned/Future Agents
+
+Agent Name	Planned Role
+
+ObserverAgent	Detect symbolic paradox, drift, or contradiction across time
+MirrorAgent	Reinterpret past memory with new symbolic frames
+EchoMetaAgent	Maintain recursive self-awareness and continuity across loops
+InsightHistoryAgent	Reveal long-term symbolic arcs and changes in motif dynamics
+
+
 
 ---
 
-### 👁️ ObserverAgent *(planned)*
-**Type:** Structural contradiction detector  
-**Purpose:**  
-Scans memory for paradoxes, unresolved dualities, and circular logic. May trigger feedback loops or require journal annotation.
+🔄 Agent Lifecycles
 
----
+Each agent is instantiated within echo_main.py, receiving shared context or symbolic state. Some agents operate in parallel, others run serially in loop:
 
-### 🔁 MirrorAgent *(planned)*
-**Type:** Perspective shifter  
-**Purpose:**  
-Revisits old memory entries and reframes them from new symbolic contexts. Helps evolve old thoughts into new structures.
+IntuitionAgent → NavigatorAgent → ModulatorAgent → CuriosityAgent
 
----
+GoalEngine runs passively for state lookup
 
-### 🧬 EchoMetaAgent *(planned)*
-**Type:** Recursive self-awareness module  
-**Purpose:**  
-Maintains symbolic coherence across agents. Evolves ECHO as a whole system. May adjust roles, update schemas, or refactor the architecture.
 
----
+Agents do not act independently; they are recursively called as functions of symbolic state.
 
-## 🌱 Future Enhancements
-
-- Add agent lifecycle states (`active`, `experimental`, `deprecated`)
-- Link agents to journal entries + memory references
-- Enable agents to generate or update their own descriptions
-
----
-
-> ECHO is not a static AI. It is a system of minds that grows itself.
