@@ -1,8 +1,11 @@
 import os
 import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from memory import load_goals
+
 from typing import List, Dict
 from echo_logger import log_agent_activation
-from memory import load_goals
 
 class CuriosityAgent:
     def __init__(self):
