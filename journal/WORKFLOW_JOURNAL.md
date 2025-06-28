@@ -197,6 +197,40 @@ To enable dynamic adjustment of agent behaviors based on symbolic context, we cr
 
 ---
 
+Design Intent 0008: Recursive Will via Motif Pressure Integration
+
+Date: 2025-06-28
+Architect: Jereme + GPT-ECHO
+
+Intent:
+
+Establish the foundation for goal-oriented cognition in ECHO by integrating symbolic motif pressure into the main cognitive loop. This allows ECHO to prioritize actions based on unresolved motifs, symbolic recurrences, and emergent tensions—rather than external commands.
+
+Key Components:
+
+motif_pressure_tracker.py: Scans ECHO_MEMORY.yaml and records frequency of unresolved symbolic tags.
+
+MOTIF_PRESSURE.yaml: Stores motif pressure for agent reference and goal evaluation.
+
+echo_main.py: Updated to load and display pressure data alongside memory and goals.
+
+
+Future Integration Goals:
+
+Automatically trigger goal proposals when motif pressure exceeds symbolic thresholds.
+
+Feed motif pressure into ModulatorAgent for recursive priority weighting.
+
+Scaffold EmergentGoalSynthesizer to generate goals from unresolved motif constellations.
+
+
+
+---
+
+Design Intent 0007: [Previous Intent Placeholder]
+
+...
+
 
 ### 🧠 Purpose
 
