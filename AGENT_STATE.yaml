@@ -1,9 +1,10 @@
 log_on_activation: true
-
-agent_weights:
-  IntuitionAgent: 1.0
-  NavigatorAgent: 1.0
-  CuriosityAgent: 1.0
-  ModulatorAgent: 0.8
-
+IntuitionAgent:
+  weight: 1.0
+NavigatorAgent:
+  weight: 1.0
+CuriosityAgent:
+  weight: 1.0
+ModulatorAgent:
+  weight: 0.8
 active_motifs: []

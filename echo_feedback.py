@@ -8,15 +8,22 @@ MEMORY_PATH = "memory/ECHO_MEMORY.yaml"
 PRESSURE_PATH = "memory/MOTIF_PRESSURE.yaml"
 
 def load_memory():
+    """Return the list stored under the ``echo_memory`` key."""
     if not os.path.exists(MEMORY_PATH):
         return []
     with open(MEMORY_PATH, 'r') as f:
-        data = yaml.safe_load(f)
-        return data if isinstance(data, list) else []
+        data = yaml.safe_load(f) or {}
+    return data.get('echo_memory', [])
 
 def save_memory(entries):
+    """Persist the list under the ``echo_memory`` key while preserving other data."""
+    data = {}
+    if os.path.exists(MEMORY_PATH):
+        with open(MEMORY_PATH, 'r') as f:
+            data = yaml.safe_load(f) or {}
+    data['echo_memory'] = entries
     with open(MEMORY_PATH, 'w') as f:
-        yaml.dump(entries, f, sort_keys=False)
+        yaml.dump(data, f, sort_keys=False)
 
 def update_pressure(tag):
     if os.path.exists(PRESSURE_PATH):
