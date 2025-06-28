@@ -1,4 +1,8 @@
+import sys
 import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from datetime import datetime
 yaml = __import__("yaml")
 
@@ -50,16 +54,3 @@ if any("agents" in arg for arg in sys.argv):
         return cls
 
     builtins.__ECHO_AUTO_LOG_PATCH__ = log_init_patch
-
-# Patch all current agents explicitly
-try:
-    from agents.intuition import IntuitionAgent
-    from agents.navigator import NavigatorAgent
-    from agents.modulator import ModulatorAgent
-    from agents.curiosity_agent import CuriosityAgent
-
-    for agent_cls in [IntuitionAgent, NavigatorAgent, ModulatorAgent, CuriosityAgent]:
-        if hasattr(__builtins__, "__ECHO_AUTO_LOG_PATCH__"):
-            __ECHO_AUTO_LOG_PATCH__(agent_cls)
-except Exception as e:
-    log_custom_event(f"[Auto-Patch Failed] {e}")
