@@ -8,7 +8,6 @@ sys.path.insert(0, BASE_PATH)
 from echo_logger import log_agent_activation
 import yaml
 from collections import defaultdict
-from echo_logger import log_agent_activation
 
 log_agent_activation("MotifPressureTracker", reason="Recalculate motif pressure from ECHO_MEMORY")
 
