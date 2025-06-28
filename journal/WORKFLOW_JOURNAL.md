@@ -128,3 +128,11 @@ Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automa
 
 Date: 2025-06-28
 Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
+
+---
+
+🔁 Design Intent 0012: Motif Pressure Tracker Cleanup
+
+Date: 2025-06-28
+Purpose: Refactor motif_pressure_tracker to remove unreachable code and expose
+helper functions for computing and saving pressure.
