@@ -10,6 +10,11 @@ It reads from META_PREFERENCES.yaml and modifies AGENT_STATE.yaml accordingly.
 
 import yaml
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from echo_logger import log_agent_activation
+
 
 class ModulatorAgent:
     def __init__(self, preferences_path="memory/META_PREFERENCES.yaml", agent_state_path="memory/AGENT_STATE.yaml"):
