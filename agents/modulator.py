@@ -17,7 +17,9 @@ from echo_logger import log_agent_activation
 
 
 class ModulatorAgent:
-    def __init__(self, preferences_path="memory/META_PREFERENCES.yaml", agent_state_path="memory/AGENT_STATE.yaml"):
+    def __init__(self, preferences_path="memory/META_PREFERENCES.yaml", agent_state_path=None):
+        if agent_state_path is None:
+            agent_state_path = os.path.join(os.path.dirname(__file__), "..", "AGENT_STATE.yaml")
         self.preferences_path = preferences_path
         self.agent_state_path = agent_state_path
         self.meta_preferences = self.load_yaml(preferences_path)

@@ -110,8 +110,16 @@ Future entries can follow the same format using Design Intent 0010 and so on.
 
 ---
 
+
+🔁 Design Intent 0010: Data Structure Alignment
+
+Date: 2025-06-28
+Purpose: Standardize MOTIF_PRESSURE.yaml structure and unify AGENT_STATE.yaml path for ModulatorAgent.
+
+
 🔁 Design Intent 0010: Daemon Self-Modulation
 
 Date: 2025-06-28
 Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automatically each cycle.
+
 

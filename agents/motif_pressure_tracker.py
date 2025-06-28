@@ -22,9 +22,21 @@ def load_yaml(file_name):
     except FileNotFoundError:
         return {}
 
+    with open(MEMORY_FILE, "r") as f:
+        data = yaml.safe_load(f) or {}
+        memory = data.get("echo_memory", [])
+        
+    pressure = {}
+
+    for entry in memory:
+        for tag in entry.get("tags", []):
+            if tag not in pressure:
+                pressure[tag] = 0
+            pressure[tag] += 1
+
 def compute_motif_pressure():
     memory = load_yaml("ECHO_MEMORY.yaml")
-    motif_counter = defaultdict(int)
+    motif_counter = defaultdict(int
 
     for entry in memory.get("echo_memory", []):
         if isinstance(entry, dict):
@@ -33,6 +45,10 @@ def compute_motif_pressure():
         else:
             print(f"[WARN] Skipping malformed memory entry: {entry}")
 
+def save_pressure(pressure):
+    with open(PRESSURE_FILE, "w") as f:
+        yaml.dump({"motif_pressure": pressure}, f, sort_keys=False)
+    print(f"✅ Motif pressure written to {PRESSURE_FILE}")
     return dict(sorted(motif_counter.items(), key=lambda x: -x[1]))
 
 if __name__ == "__main__":

@@ -35,7 +35,8 @@ def daemon_loop():
         modulator = ModulatorAgent()
 
         # Load memory signals
-        pressure_data = load_yaml(PRESSURE_PATH)
+        pressure_raw = load_yaml(PRESSURE_PATH)
+        pressure_data = pressure_raw.get("motif_pressure", pressure_raw)
         goal_data = load_yaml(GOALS_PATH)
 
         # Run modulator to adapt agent weights
