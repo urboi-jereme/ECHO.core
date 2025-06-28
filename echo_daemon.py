@@ -26,7 +26,7 @@ def daemon_loop():
     log_custom_event("🌀 ECHO Daemon started")
 
     while True:
-        timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+        timestamp = datetime.now(datetime.UTC)
         log_custom_event(f"🔁 Daemon cycle at {timestamp}")
 
         intuition = IntuitionAgent()
