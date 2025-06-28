@@ -122,4 +122,11 @@ Purpose: Standardize MOTIF_PRESSURE.yaml structure and unify AGENT_STATE.yaml pa
 Date: 2025-06-28
 Purpose: Integrate ModulatorAgent into echo_daemon so agent weights adapt automatically each cycle.
 
+---
+
+🔁 Design Intent 0011: Recursive Alignment Logging
+
+Date: 2025-06-28
+Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIGNMENTS.yaml` and expose helper functions for logging.
+
 

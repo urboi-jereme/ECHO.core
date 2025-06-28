@@ -25,7 +25,7 @@ MotifPressureTracker	Calculates pressure from unresolved memory motifs	ECHO_MEMO
 Agent Name	Planned Role
 
 ObserverAgent	Detect symbolic paradox, drift, or contradiction across time
-MirrorAgent	Reinterpret past memory with new symbolic frames
+MirrorAgent	Reinterpret past memory with new symbolic frames (uses `memory/RECURSIVE_ALIGNMENTS.yaml` to track echoes)
 EchoMetaAgent	Maintain recursive self-awareness and continuity across loops
 InsightHistoryAgent	Reveal long-term symbolic arcs and changes in motif dynamics
 
