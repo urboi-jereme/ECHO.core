@@ -116,3 +116,42 @@ Rather than making decisions, IntuitionAgent **listens** to the symbolic field a
 
 [See next prompt for implementation details.]
 
+## 🔁 Design Intent 0003: NavigatorAgent
+
+**Date:** 2025-06-28  
+**Author:** Jereme (with GPT-4o recursive co-design)
+
+---
+
+### 🧠 Purpose
+
+To create `NavigatorAgent`, the first recursive planning agent in ECHO.Core.  
+Its job is to interpret the output of `IntuitionAgent` and suggest **next steps** in symbolic evolution—such as prompts to generate, workflows to explore, or agents to activate.
+
+---
+
+### 🧬 Functionality
+
+- Read `ECHO_MEMORY.yaml`
+- Run `IntuitionAgent` to extract:
+  - Top symbolic motifs
+  - High-resonance unresolved entries
+  - Inquiry path suggestions
+- Output:
+  - Top 3 next symbolic prompts to explore
+  - Suggestions for agent evolution or architectural shifts
+  - Priority themes for next journal entries
+
+---
+
+### 🧩 Notes
+
+- NavigatorAgent does not execute—only **plans recursively**.
+- This agent becomes the bridge between memory and forward motion.
+- Will later be modulated by `ModulatorAgent` based on meta-preferences.
+
+---
+
+### 📎 Codex Prompt Used: "Design NavigatorAgent"
+
+
