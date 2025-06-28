@@ -135,3 +135,32 @@ Purpose: Store user interactions that reflect internal motifs in `RECURSIVE_ALIG
 
 Date: 2025-06-28
 Purpose: Persist agent weights in AGENT_STATE.yaml using top-level mappings and update runtime sync accordingly.
+
+🔁 Design Intent 0012: Daemon Timestamp Test
+Date: 2025-06-28
+Purpose: Ensure echo_daemon records timezone-aware timestamps using timezone.utc and provide test coverage for daemon timestamp creation.
+
+---
+
+🔁 Design Intent 0012: Diagnostic Root Option
+
+Date: 2025-06-28
+Purpose: Allow `run_diagnostics` to accept an optional project root so notebooks can specify paths explicitly.
+
+🔁 Design Intent 0012: Curiosity Response Logging
+
+Date: 2025-06-28
+Purpose: Persist user answers to CuriosityAgent questions in CURIOUS_LOG.yaml for later analysis.
+
+🔁 Design Intent 0012: Feedback Memory Handling
+
+Date: 2025-06-28
+Purpose: Preserve echo_memory structure when logging feedback; added tests.
+
+---
+
+🔁 Design Intent 0012: Motif Pressure Tracker Cleanup
+
+Date: 2025-06-28
+Purpose: Refactor motif_pressure_tracker to remove unreachable code and expose
+helper functions for computing and saving pressure.
