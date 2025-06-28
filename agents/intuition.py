@@ -18,7 +18,16 @@ from operator import itemgetter
 class IntuitionAgent:
     def __init__(self, memory_file="memory/ECHO_MEMORY.yaml"):
         with open(memory_file, 'r') as file:
-            self.memory = yaml.safe_load(file)['echo_memory']
+            loaded = yaml.safe_load(file)
+            if not loaded or 'echo_memory' not in loaded:
+                print("⚠️  Warning: ECHO_MEMORY.yaml is empty or malformed. Initializing with empty memory.")
+                self.memory = []
+            else:
+                self.memory = loaded['echo_memory']
+
+        if not self.memory:
+            print("🧪 Tip: You can seed the memory by adding symbolic insights into ECHO_MEMORY.yaml.")
+
 
     def get_resonant_tags(self, top_n=5):
         tag_scores = defaultdict(float)
