@@ -1,50 +1,70 @@
-import yaml
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+import yaml
+from datetime import datetime
 
-from echo_logger import log_agent_activation
+# Logging support (optional)
+try:
+    from echo_logger import log_agent_activation
+    log_agent_activation("CuriosityAgent", reason="Initialization")
+except ImportError:
+    def log_agent_activation(*args, **kwargs): pass  # Silent fallback if logger missing
 
-PRESSURE_PATH = os.path.join(os.path.dirname(__file__), '../memory/MOTIF_PRESSURE.yaml')
-GOALS_PATH = os.path.join(os.path.dirname(__file__), '../memory/GOALS.yaml')
+# Correct import path for goal handling
+from memory.goals import load_goals
 
 class CuriosityAgent:
-    def __init__(self, pressure_threshold=3):
-        self.pressure_threshold = pressure_threshold
-        self.motif_pressure = self.load_yaml(PRESSURE_PATH).get('motif_pressure', {})
-        self.goals = self.load_yaml(GOALS_PATH).get('goals', [])
-        self.active_goal_tags = self.get_active_goal_tags()
+    def __init__(self):
+        print("[CuriosityAgent] Initializing...")
+        self.goals = self._load_goals()
+        self.memory_path = os.path.join(os.path.dirname(__file__), "..", "memory", "ECHO_MEMORY.yaml")
+        self.curiosity_log_path = os.path.join(os.path.dirname(__file__), "..", "memory", "CURIOUS_LOG.yaml")
 
-    def load_yaml(self, path):
-        if not os.path.exists(path):
-            print(f"⚠️  Missing file: {path}")
-            return {}
-        with open(path, 'r') as f:
-            return yaml.safe_load(f)
-
-    def get_active_goal_tags(self):
-        tags = []
-        for goal in self.goals:
-            if goal.get('status') == 'active':
-                tags.extend(goal.get('trigger_tags', []))
-        return set(tags)
+    def _load_goals(self):
+        try:
+            goals = load_goals()
+            print(f"[CuriosityAgent] Loaded {len(goals)} goals.")
+            return goals
+        except Exception as e:
+            print(f"[CuriosityAgent] Error loading goals: {e}")
+            return []
 
     def generate_questions(self):
+        print("[CuriosityAgent] Generating questions...")
         questions = []
-        for tag, count in self.motif_pressure.items():
-            if count >= self.pressure_threshold and tag not in self.active_goal_tags:
-                questions.append(
-                    f"You've engaged frequently with the motif '{tag}'. "
-                    f"What unresolved insight or tension might it represent?"
-                )
+
+        for goal in self.goals:
+            if goal.get("status") != "active":
+                continue
+
+            for tag in goal.get("trigger_tags", []):
+                q = f"What pattern might be hidden behind {tag}?"
+                questions.append({
+                    "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+                    "motif": tag,
+                    "question_text": q,
+                    "user_response": None
+                })
+
+        if questions:
+            print(f"[CuriosityAgent] Generated {len(questions)} question(s).")
+        else:
+            print("[CuriosityAgent] No questions generated.")
+
         return questions
 
-if __name__ == '__main__':
-    agent = CuriosityAgent()
-    questions = agent.generate_questions()
-    if questions:
-        print("\n🤔 CuriosityAgent — Symbolic Questions:")
-        for q in questions:
-            print(f"• {q}")
-    else:
-        print("\n✅ No unresolved high-pressure motifs outside active goals.")
+    def log_questions(self, questions):
+        print(f"[CuriosityAgent] Logging {len(questions)} questions...")
+        try:
+            if os.path.exists(self.curiosity_log_path):
+                with open(self.curiosity_log_path, "r") as f:
+                    existing = yaml.safe_load(f) or {}
+            else:
+                existing = {}
+
+            existing.setdefault("questions", []).extend(questions)
+
+            with open(self.curiosity_log_path, "w") as f:
+                yaml.dump(existing, f, sort_keys=False)
+            print(f"[CuriosityAgent] Questions logged to {self.curiosity_log_path}")
+        except Exception as e:
+            print(f"[CuriosityAgent] Error logging questions: {e}")
