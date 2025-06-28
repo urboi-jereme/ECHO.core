@@ -17,6 +17,38 @@
 ---
 
 ## Design Intent Log
+---
+
+### 🧠 Design Intent 0004 — ModulatorAgent
+
+**Date:** 2025-06-28  
+**Author:** NavigatorAgent  
+**Status:** Proposed
+
+**Purpose:**  
+Create a metacognitive agent that dynamically adjusts the behavior of other agents based on symbolic pressure from memory. ModulatorAgent reads from `META_PREFERENCES.yaml` and alters agent response styles, recursion depth, abstraction level, and prompt generation bias.
+
+**Input Sources:**  
+- High-resonance tags from IntuitionAgent  
+- Long-term patterns in ECHO_MEMORY.yaml  
+- Meta-preference schema in `META_PREFERENCES.yaml`
+
+**Responsibilities:**  
+- Amplify or dampen agent behavior based on symbolic motif context  
+- Introduce style modulation (intuitive vs. logical, abstract vs. direct)  
+- Temporarily override agent weightings in `AGENT_STATE.yaml`  
+
+**Symbolic Motifs Linked:**  
+- `resonance_vs_resistance`, `intuition`, `echo_dynamics`, `meta_agency`
+
+**Next Steps:**  
+- Create `META_PREFERENCES.yaml` schema  
+- Scaffold `ModulatorAgent` class  
+- Allow NavigatorAgent to call ModulatorAgent as a preprocessing filter
+
+---
+
+
 
 ---
 
