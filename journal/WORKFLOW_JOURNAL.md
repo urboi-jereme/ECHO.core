@@ -72,3 +72,47 @@ The repository now contains the full scaffolding required for future
 symbolic agent development.
 
 ---
+
+## 🔁 Design Intent 0002: IntuitionAgent
+
+**Date:** 2025-06-28  
+**Author:** Jereme (with GPT-4o recursive co-design)
+
+---
+
+### 🧠 Purpose
+
+To create the first cognition module within ECHO.Core: `IntuitionAgent`.  
+This agent analyzes symbolic memory (`ECHO_MEMORY.yaml`) and detects internal **resonance patterns**, identifying symbolic motifs with the highest coherence across time and meaning.
+
+Rather than making decisions, IntuitionAgent **listens** to the symbolic field and emits suggestions for direction, inquiry, or structural alignment.
+
+---
+
+### 🧬 Functionality
+
+- Load `ECHO_MEMORY.yaml`
+- Cluster memory entries by symbolic tags
+- Score internal **resonance** by:
+  - Frequency of motif
+  - Strength of resonance scores
+  - Status (`active`, `revisit`, `archived`)
+- Output a list of:
+  - Dominant motifs
+  - Suggested next inquiries
+  - Unresolved patterns with symbolic weight
+
+---
+
+### 🧩 Notes
+
+- This is **not a planner.** It doesn't task or execute—it perceives symbolic gravity.
+- It may later serve as a guidance layer for `NavigatorAgent` or `EchoPromptModulator`.
+- Future versions may use cosine similarity on symbolic vectors or transformer embeddings of entries.
+
+---
+
+### 📎 Codex Prompt Used: "Design IntuitionAgent"
+
+[See next prompt for implementation details.]
+
