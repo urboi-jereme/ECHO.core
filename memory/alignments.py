@@ -48,3 +48,17 @@ def log_alignment(interaction, mirrored_tags, reasoning_path, agent_activations,
     data['recursive_alignments'] = entries
     save_alignments(data, path)
     return entry
+
+
+def log_recursive_alignment(interaction, mirrored_tags, agent_activations, score, notes, path: str = ALIGNMENTS_PATH):
+    """Convenience wrapper that infers the reasoning path from mirrored tags."""
+    reasoning_path = [f"mirror:{tag}" for tag in mirrored_tags]
+    return log_alignment(
+        interaction=interaction,
+        mirrored_tags=mirrored_tags,
+        reasoning_path=reasoning_path,
+        agent_activations=agent_activations,
+        score=score,
+        notes=notes,
+        path=path,
+    )

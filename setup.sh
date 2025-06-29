@@ -31,6 +31,9 @@ if [ ! -f requirements.txt ]; then
 pyyaml
 rich
 jupyter
+pandas
+matplotlib
+ipykernel
 EOF
 fi
 
