@@ -1,10 +1,13 @@
 print("✅ echo_main.py is running...")
 
+import os
+import sys
+import yaml
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity import CuriosityAgent
+from memory.goals import load_goals
 from yaml_utils import load  # ✅ This is our YAML loader now
-import os
 
 # Load active goals
 goals = load("memory/GOALS.yaml", fallback=[])
@@ -13,9 +16,7 @@ for g in goals:
     print(f" - {g}")
 
 # Load motif pressure
-motif_pressure = load("memory/MOTIF_PRESSURE.yaml", fallback={})
-if isinstance(motif_pressure, dict) and "motif_pressure" in motif_pressure:
-    motif_pressure = motif_pressure["motif_pressure"]
+motif_pressure = load("memory/MOTIF_PRESSURE.yaml", fallback={}).get("motif_pressure", {})
 
 print("\n💡 Motif Pressure Levels:")
 for tag, count in sorted(motif_pressure.items(), key=lambda x: -x[1]):
