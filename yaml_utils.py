@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 from pathlib import Path, PurePath
-from typing import Any
+from typing import Any, Union
 
 from yaml import dump as ydump
 from yaml import load as yload
@@ -14,13 +14,16 @@ except ImportError:
     from yaml import SafeDumper, SafeLoader  # type: ignore
 
 
-def loads(stream: Any) -> Any:
-    """Load YAML from a stream."""
+def loads(stream: Any, fallback: Union[dict, list] = {}) -> Any:
+    """Load YAML from a stream with fallback default."""
     try:
-        return yload(stream, Loader=SafeLoader) or {}
+        data = yload(stream, Loader=SafeLoader)
+        if isinstance(data, (dict, list)):
+            return data
+        return fallback
     except Exception as e:
         print(f"⚠️ YAML parse error: {e}")
-        return {}
+        return fallback
 
 
 def dumps(data: Any) -> str:
@@ -32,16 +35,17 @@ def dumps(data: Any) -> str:
         return ""
 
 
-def load(fpath: str | PurePath) -> Any:
-    """Load YAML from a file path."""
+def load(fpath: str | PurePath, fallback: Union[dict, list] = {}) -> Any:
+    """Load YAML from a file path with fallback default."""
     try:
-        return loads(Path(str(fpath)).read_text(encoding="utf-8"))
+        content = Path(str(fpath)).read_text(encoding="utf-8")
+        return loads(content, fallback=fallback)
     except FileNotFoundError:
         print(f"❌ YAML file not found: {fpath}")
-        return {}
+        return fallback
     except Exception as e:
         print(f"⚠️ Error reading YAML from {fpath}: {e}")
-        return {}
+        return fallback
 
 
 def dump(data: Any, outpath: str | PurePath) -> None:
