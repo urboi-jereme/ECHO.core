@@ -1,17 +1,14 @@
 import os
-from datetime import datetime
 import sys
+from datetime import datetime
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-# Logging support
-try:
-    from echo_logger import log_agent_activation
-    log_agent_activation("CuriosityAgent", reason="Initialization")
-except ImportError:
-    def log_agent_activation(*args, **kwargs): pass
-
+from echo_logger import log_agent_activation
 from memory.goals import load_goals
-from yaml_utils import load, dump  # ✅ Replace direct yaml usage
+from yaml_utils import load, dump  # ✅ switch to YAML utils
+
+log_agent_activation("CuriosityAgent", reason="Initialization")
 
 class CuriosityAgent:
     def __init__(self):
@@ -68,7 +65,6 @@ class CuriosityAgent:
             data = load(self.curiosity_log_path, fallback={})
             questions = data.setdefault("questions", [])
 
-            # Match question by timestamp + content
             match = next(
                 (q for q in questions if
                  q.get("timestamp") == question.get("timestamp") and
