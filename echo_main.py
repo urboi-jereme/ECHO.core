@@ -7,13 +7,16 @@ from memory.goals import load_goals
 import yaml
 import os
 
+# echo_main.py
+from memory.echo_memory import load_yaml
+
+print("✅ echo_main.py is running...")
+
 # Load active goals
-goals = load_goals()
+goals = load_yaml("memory/GOALS.yaml") or []
 print("🎯 Active Goals:")
 for g in goals:
-    if g['status'] == 'active':
-        print(f"• {g['goal']} (tags: {', '.join(g['trigger_tags'])})")
-print()
+    print(f" - {g}")
 
 # Load motif pressure
 PRESSURE_PATH = os.path.join(os.path.dirname(__file__), 'memory/MOTIF_PRESSURE.yaml')
