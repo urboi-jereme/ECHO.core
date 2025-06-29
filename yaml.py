@@ -1,28 +1,17 @@
-import json
+# yaml.py
+import yaml
 
-# Minimal YAML helpers for test environment
-
-def safe_load(stream):
-    data = stream.read()
-    if not data.strip():
-        return {}
+def load_yaml(path):
     try:
-        return json.loads(data)
-    except Exception:
-        result = {}
-        for line in data.splitlines():
-            if ':' not in line:
-                continue
-            key, value = line.split(':', 1)
-            key = key.strip()
-            value = value.strip()
-            if value.startswith('[') and value.endswith(']'):
-                inner = value[1:-1].strip()
-                result[key] = [] if not inner else [v.strip().strip("'\"") for v in inner.split(',')]
-            else:
-                result[key] = value.strip('"\'') if value else None
-        return result
+        with open(path, "r") as f:
+            return yaml.safe_load(f) or []
+    except Exception as e:
+        print(f"⚠️ Error loading YAML from {path}: {e}")
+        return []
 
-def dump(data, stream, sort_keys=False):
-    text = json.dumps(data, sort_keys=sort_keys)
-    stream.write(text)
+def save_yaml(path, data):
+    try:
+        with open(path, "w") as f:
+            yaml.dump(data, f, default_flow_style=False)
+    except Exception as e:
+        print(f"⚠️ Error saving YAML to {path}: {e}")
