@@ -174,3 +174,10 @@ helper functions for computing and saving pressure.
 
 Date: 2025-06-29
 Purpose: Sync repository structure, rename CuriosityAgent module, update documentation, and ensure notebooks and memory utilities reflect the final open-source layout.
+
+---
+
+🔁 Design Intent 0014: Index Refresh and Sync Confirmation
+
+Date: 2025-06-30
+Purpose: Verified new agent modules and memory schemas, replaced curiosity_agent.py with curiosity.py, confirmed RECURSIVE_ALIGNMENTS tracking and notebook location. Repository ready for new contributions.
