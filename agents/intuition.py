@@ -7,8 +7,6 @@ Its purpose is to analyze ECHO_MEMORY.yaml and identify:
 1. The most resonant symbolic motifs (based on tag frequency + resonance score)
 2. Unresolved insights that still carry active symbolic weight
 3. Suggested next directions based on internal harmonic alignment
-
-This agent does not make decisions—it listens to the field and reflects its structure.
 """
 
 import os
@@ -16,11 +14,9 @@ import sys
 from collections import defaultdict
 from operator import itemgetter
 
-# Adjust sys.path for relative imports if needed
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
 from echo_logger import log_agent_activation
-from yaml_utils import load  # ✅ Use your own YAML loader
+from yaml_utils import load  # ✅ using your wrapper
 
 class IntuitionAgent:
     def __init__(self, memory_file="memory/ECHO_MEMORY.yaml"):
