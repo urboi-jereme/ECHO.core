@@ -6,7 +6,7 @@ from memory.alignments import log_alignment
 # Ensure project root is in sys.path
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-from agents.curiosity_agent import CuriosityAgent
+from agents.curiosity import CuriosityAgent
 from echo_logger import log_agent_activation
 
 def main():

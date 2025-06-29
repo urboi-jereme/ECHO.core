@@ -47,7 +47,7 @@ ECHO.Core/
 │   ├── intuition.py
 │   ├── navigator.py
 │   ├── modulator.py
-│   └── curiosity_agent.py
+│   └── curiosity.py
 ├── memory/
 │   ├── ECHO_MEMORY.yaml
 │   ├── MOTIF_PRESSURE.yaml
@@ -167,3 +167,10 @@ Purpose: Preserve echo_memory structure when logging feedback; added tests.
 Date: 2025-06-28
 Purpose: Refactor motif_pressure_tracker to remove unreachable code and expose
 helper functions for computing and saving pressure.
+
+---
+
+🔁 Design Intent 0013: Public Release Cleanup
+
+Date: 2025-06-29
+Purpose: Sync repository structure, rename CuriosityAgent module, update documentation, and ensure notebooks and memory utilities reflect the final open-source layout.
