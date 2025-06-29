@@ -11,28 +11,28 @@ Its purpose is to analyze ECHO_MEMORY.yaml and identify:
 This agent does not make decisions—it listens to the field and reflects its structure.
 """
 
-import yaml
+import os
+import sys
 from collections import defaultdict
 from operator import itemgetter
-import sys
-import os
+
+# Adjust sys.path for relative imports if needed
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from echo_logger import log_agent_activation
+from yaml_utils import load  # ✅ Use your own YAML loader
 
 class IntuitionAgent:
     def __init__(self, memory_file="memory/ECHO_MEMORY.yaml"):
-        with open(memory_file, 'r') as file:
-            loaded = yaml.safe_load(file)
-            if not loaded or 'echo_memory' not in loaded:
-                print("⚠️  Warning: ECHO_MEMORY.yaml is empty or malformed. Initializing with empty memory.")
-                self.memory = []
-            else:
-                self.memory = loaded['echo_memory']
+        loaded = load(memory_file, fallback={})
+        if not loaded or 'echo_memory' not in loaded:
+            print("⚠️  Warning: ECHO_MEMORY.yaml is empty or malformed. Initializing with empty memory.")
+            self.memory = []
+        else:
+            self.memory = loaded['echo_memory']
 
         if not self.memory:
             print("🧪 Tip: You can seed the memory by adding symbolic insights into ECHO_MEMORY.yaml.")
-
 
     def get_resonant_tags(self, top_n=5):
         tag_scores = defaultdict(float)
@@ -64,7 +64,7 @@ class IntuitionAgent:
 
     def suggest_inquiry_paths(self):
         tags = self.get_resonant_tags()
-        suggestions = []
-        for tag in tags:
-            suggestions.append(f"Explore symbolic motif: {tag['tag']} (avg resonance: {tag['avg_resonance']:.2f})")
-        return suggestions
+        return [
+            f"Explore symbolic motif: {tag['tag']} (avg resonance: {tag['avg_resonance']:.2f})"
+            for tag in tags
+        ]
