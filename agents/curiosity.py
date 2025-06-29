@@ -1,16 +1,17 @@
 import os
-import yaml
 from datetime import datetime
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-# Logging support (optional)
+# Logging support
 try:
     from echo_logger import log_agent_activation
     log_agent_activation("CuriosityAgent", reason="Initialization")
 except ImportError:
-    def log_agent_activation(*args, **kwargs): pass  # Silent fallback if logger missing
+    def log_agent_activation(*args, **kwargs): pass
 
-# Correct import path for goal handling
 from memory.goals import load_goals
+from yaml_utils import load, dump  # ✅ Replace direct yaml usage
 
 class CuriosityAgent:
     def __init__(self):
@@ -35,7 +36,6 @@ class CuriosityAgent:
         for goal in self.goals:
             if goal.get("status") != "active":
                 continue
-
             for tag in goal.get("trigger_tags", []):
                 q = f"What pattern might be hidden behind {tag}?"
                 questions.append({
@@ -55,41 +55,26 @@ class CuriosityAgent:
     def log_questions(self, questions):
         print(f"[CuriosityAgent] Logging {len(questions)} questions...")
         try:
-            if os.path.exists(self.curiosity_log_path):
-                with open(self.curiosity_log_path, "r") as f:
-                    existing = yaml.safe_load(f) or {}
-            else:
-                existing = {}
-
+            existing = load(self.curiosity_log_path, fallback={})
             existing.setdefault("questions", []).extend(questions)
-
-            with open(self.curiosity_log_path, "w") as f:
-                yaml.dump(existing, f, sort_keys=False)
+            dump(existing, self.curiosity_log_path)
             print(f"[CuriosityAgent] Questions logged to {self.curiosity_log_path}")
         except Exception as e:
             print(f"[CuriosityAgent] Error logging questions: {e}")
 
     def log_user_response(self, question, response):
-        """Persist a user's response to a curiosity question."""
         print(f"[CuriosityAgent] Logging response for motif '{question.get('motif')}'...")
         try:
-            if os.path.exists(self.curiosity_log_path):
-                with open(self.curiosity_log_path, "r") as f:
-                    data = yaml.safe_load(f) or {}
-            else:
-                data = {}
-
+            data = load(self.curiosity_log_path, fallback={})
             questions = data.setdefault("questions", [])
 
-            # try to find matching question by timestamp and text
-            match = None
-            for q in questions:
-                if (
-                    q.get("timestamp") == question.get("timestamp")
-                    and q.get("question_text") == question.get("question_text")
-                ):
-                    match = q
-                    break
+            # Match question by timestamp + content
+            match = next(
+                (q for q in questions if
+                 q.get("timestamp") == question.get("timestamp") and
+                 q.get("question_text") == question.get("question_text")),
+                None
+            )
 
             if match:
                 match["user_response"] = response
@@ -98,8 +83,7 @@ class CuriosityAgent:
                 new_entry["user_response"] = response
                 questions.append(new_entry)
 
-            with open(self.curiosity_log_path, "w") as f:
-                yaml.dump(data, f, sort_keys=False)
+            dump(data, self.curiosity_log_path)
             print(f"[CuriosityAgent] Response logged to {self.curiosity_log_path}")
         except Exception as e:
             print(f"[CuriosityAgent] Error logging response: {e}")
