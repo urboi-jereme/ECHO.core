@@ -107,9 +107,11 @@ To run ECHO.Core locally, follow these steps:
     cd echo.core
     ```
 2.  **Install dependencies**:
-    ECHO.Core primarily relies on `pyyaml` and `rich`. You can install them using pip:
+    Use `setup.sh` or install packages from `requirements.txt`:
     ```bash
-    pip install pyyaml rich
+    ./setup.sh
+    # or
+    pip install -r requirements.txt
     ```
 3.  **Initial Setup**:
     Ensure the necessary YAML files in the `memory/` directory are present. If `MOTIF_PRESSURE.yaml` is missing, you may need to run `motif_pressure_tracker.py` first:
@@ -148,6 +150,11 @@ To run ECHO.Core locally, follow these steps:
     ```bash
     python visualizer.py
     ```
+10. **Generate Progress Report**:
+    Summarize motif activity and recent memory:
+    ```bash
+    python tools/progress_report.py
+    ```
 
 ### Running the Notebooks
 
@@ -159,8 +166,9 @@ jupyter notebook
 ```
 
 Each notebook imports helper functions from `notebooks/setup.py` to configure paths
-and handle YAML files. Ensure your environment has the `pyyaml` and `matplotlib`
-packages installed.
+and handle YAML files. The `notebooks/echo_reflection.ipynb` notebook provides a
+guided flow for answering, tagging, and logging motif-based reflections.
+Ensure your environment has the `pyyaml`, `pandas`, and `matplotlib` packages installed.
 
 ## Contribution Guidelines
 

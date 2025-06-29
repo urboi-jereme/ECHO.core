@@ -1,53 +1,50 @@
 from datetime import datetime
-import yaml, os
+from memory import (
+    append_memory_entry,
+    increment_pressure,
+    load_alignments,
+    log_recursive_alignment,
+)
 
-timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
-motif = "resonance_vs_resistance"
-response_text = """I’m not entirely sure what this motif is referencing, which is part of why I want to engage with it. I understand resonance as what happens when complex systems fall into harmony — when internal or external elements align and amplify each other. Resistance, by contrast, feels like friction — any force that pushes back, interrupts, or disrupts that harmony.
+MEMORY_PATH = 'memory/ECHO_MEMORY.yaml'
+PRESSURE_PATH = 'memory/MOTIF_PRESSURE.yaml'
+ALIGN_PATH = 'memory/RECURSIVE_ALIGNMENTS.yaml'
 
-So perhaps this motif describes the dynamic tension between flow and friction. When something starts to resonate inside me — an idea, a system, a feeling — there’s often a part of me that resists, questions, or pulls away. Maybe that resistance isn’t always a threat; maybe it’s feedback, a boundary, or a necessary counterweight that prevents runaway loops.
 
-I’m realizing I often experience this as a creative or cognitive push-pull: I feel drawn to a pattern (resonance), but then I hesitate (resistance) — not because the pattern is wrong, but because it threatens to transform me.
+def log_reflection(motif: str, content: str):
+    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+    entry = {
+        'timestamp': timestamp,
+        'motif': motif,
+        'type': 'reflection',
+        'source': 'user',
+        'content': content,
+    }
+    append_memory_entry(entry, path=MEMORY_PATH)
+    increment_pressure(motif, path=PRESSURE_PATH)
 
-That suggests a pattern: resistance emerges in proportion to the depth of resonance, almost like a test. What resists me might be exactly where I need to lean in, not pull back. That friction may be where growth begins."""
+    # check for mirrored motifs in existing alignments
+    align_data = load_alignments(path=ALIGN_PATH)
+    seen_tags = {tag for a in align_data.get('recursive_alignments', []) for tag in a.get('mirrored_tags', [])}
+    if motif in seen_tags:
+        log_recursive_alignment(
+            interaction={'summary': 'Reflection', 'content': content},
+            mirrored_tags=[motif],
+            agent_activations=['User'],
+            score=5.0,
+            notes='Auto-logged from log_reflection.py',
+            path=ALIGN_PATH,
+        )
+    print('✅ Reflection logged, pressure updated.')
 
-memory_entry = {
-    "timestamp": timestamp,
-    "motif": motif,
-    "type": "reflection",
-    "source": "user",
-    "content": response_text
-}
 
-# Paths
-MEMORY_PATH = "memory/ECHO_MEMORY.yaml"
-LOG_PATH = "journal/ECHO_LOG.md"
-PRESSURE_PATH = "memory/MOTIF_PRESSURE.yaml"
-
-# 1. Append memory
-try:
-    with open(MEMORY_PATH, "r") as f:
-        memory = yaml.safe_load(f) or []
-except FileNotFoundError:
-    memory = []
-
-memory.append(memory_entry)
-with open(MEMORY_PATH, "w") as f:
-    yaml.dump(memory, f)
-
-# 2. Log event
-with open(LOG_PATH, "a") as f:
-    f.write(f"- [{timestamp}] Reflection recorded for motif **{motif}**\n")
-
-# 3. Update motif pressure
-try:
-    with open(PRESSURE_PATH, "r") as f:
-        pressure = yaml.safe_load(f) or {}
-except FileNotFoundError:
-    pressure = {}
-
-pressure[motif] = pressure.get(motif, 0) + 1
-with open(PRESSURE_PATH, "w") as f:
-    yaml.dump(pressure, f)
-
-print("✅ Reflection logged, pressure updated.")
+if __name__ == '__main__':
+    motif = input('Motif tag: ').strip()
+    if not motif:
+        print('❌ Motif is required.')
+    else:
+        text = input('Your reflection: ').strip()
+        if text:
+            log_reflection(motif, text)
+        else:
+            print('❌ Response text is required.')

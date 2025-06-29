@@ -1,0 +1,6 @@
+pyyaml
+rich
+jupyter
+pandas
+matplotlib
+ipykernel
