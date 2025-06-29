@@ -4,11 +4,11 @@ import yaml
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from agents.curiosity_agent import CuriosityAgent
+from agents.curiosity import CuriosityAgent
 
 
 def test_log_user_response_creates_file(tmp_path, monkeypatch):
-    monkeypatch.setattr('agents.curiosity_agent.load_goals', lambda: [])
+    monkeypatch.setattr('agents.curiosity.load_goals', lambda: [])
     agent = CuriosityAgent()
     agent.curiosity_log_path = str(tmp_path / "CURIOUS_LOG.yaml")
 
@@ -24,7 +24,7 @@ def test_log_user_response_creates_file(tmp_path, monkeypatch):
 
 
 def test_log_user_response_updates_existing(tmp_path, monkeypatch):
-    monkeypatch.setattr('agents.curiosity_agent.load_goals', lambda: [])
+    monkeypatch.setattr('agents.curiosity.load_goals', lambda: [])
     agent = CuriosityAgent()
     agent.curiosity_log_path = str(tmp_path / "CURIOUS_LOG.yaml")
 

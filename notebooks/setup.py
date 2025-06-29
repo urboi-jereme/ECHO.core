@@ -3,6 +3,22 @@ import sys
 import yaml
 from typing import Dict
 
+from memory.echo_memory import (
+    load_memory,
+    save_memory,
+    append_memory_entry,
+    load_pressure,
+    save_pressure,
+    increment_pressure,
+)
+from memory.alignments import (
+    load_alignments,
+    save_alignments,
+    log_alignment,
+    log_recursive_alignment,
+)
+from memory.symbol_mapper import resolve_symbol
+
 
 def setup_paths(project_root: str | None = None) -> Dict[str, str]:
     """Configure sys.path and return commonly used file paths."""

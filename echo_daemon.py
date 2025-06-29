@@ -6,7 +6,7 @@ import yaml
 from datetime import datetime, timezone
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
-from agents.curiosity_agent import CuriosityAgent
+from agents.curiosity import CuriosityAgent
 from agents.modulator import ModulatorAgent
 from echo_logger import log_custom_event
 

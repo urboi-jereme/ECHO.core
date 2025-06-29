@@ -13,3 +13,4 @@ from .alignments import (
     log_alignment,
     log_recursive_alignment,
 )
+from .symbol_mapper import resolve_symbol

@@ -49,7 +49,7 @@ The ECHO.Core repository is structured into several key modules, each serving a 
       * **`navigator.py`**: Proposes next prompts, actions, and recursion paths based on intuition output.
       * **`modulator.py`**: Adjusts agent weights based on symbolic and meta-pressure, modifying `AGENT_STATE.yaml`.
       * **`critic.py`**: Injects symbolic friction by analyzing prompts and motifs for blind spots or contradictions.
-      * **`curiosity_agent.py`**: Generates introspective questions from unresolved motifs.
+     * **`curiosity.py`**: Generates introspective questions from unresolved motifs.
       * **`motif_pressure_tracker.py`**: Calculates pressure from unresolved memory motifs.
       * **`__init__.py`**: Initializes the agents package.
   * **`memory/`**: Manages the system's persistent symbolic state and data:
@@ -59,6 +59,8 @@ The ECHO.Core repository is structured into several key modules, each serving a 
       * **`META_PREFERENCES.yaml`**: Contains modulation rules for adjusting agent weights based on meta-preferences.
       * **`MOTIF_PRESSURE.yaml`**: Stores the calculated pressure (frequency) of different symbolic motifs.
       * **`RECURSIVE_ALIGNMENTS.yaml`**: Captures how user interactions align with internal motifs and reasoning paths.
+      * **`echo_memory.py`**: Utilities for loading and saving memory and motif pressure.
+      * **`alignments.py`**: Helper functions for logging recursive alignments.
       * **`symbol_mapper.py`**: Resolves symbolic mappings.
       * **`goals.py`**: Utility for loading, saving, and updating goals.
       * **`__init__.py`**: Initializes the memory package.
@@ -71,6 +73,9 @@ The ECHO.Core repository is structured into several key modules, each serving a 
   * **`journal/`**: Stores logs and historical data:
       * **`WORKFLOW_JOURNAL.md`**: A chronological log of recursive evolution, documenting design intents and agent activities.
       * **`ECHO_LOG.md`**: A general activity log for agent activations and custom events.
+  * **`notebooks/`**: Jupyter notebooks and helpers:
+      * **`echo_reflection.ipynb`**: Guided flow for answering, tagging, and logging reflections.
+      * **`setup.py`**: Utility functions for configuring paths and YAML helpers.
   * **Top-level files**:
       * **`.gitignore`**: Specifies intentionally untracked files to ignore.
       * **`README.md`**: This document, providing an overview of the project.

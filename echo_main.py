@@ -2,7 +2,7 @@ print("✅ echo_main.py is running...")
 
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
-from agents.curiosity_agent import CuriosityAgent
+from agents.curiosity import CuriosityAgent
 from memory.goals import load_goals
 import yaml
 import os
