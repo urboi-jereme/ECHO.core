@@ -24,6 +24,7 @@ pip install --upgrade pip
 if [ ! -f requirements.txt ]; then
   echo "⚠️ requirements.txt not found. Creating one with basics..."
   echo -e "pyyaml\nrich\npandas" > requirements.txt
+  echo "⚠️ Default requirements.txt created. You may want to customize it later."
 fi
 pip install -r requirements.txt
 
@@ -60,16 +61,23 @@ else
   echo "🎉 All required YAML files are present."
 fi
 
-# Optional: Basic YAML syntax validation using Python
+# Fail-fast YAML syntax validation
 echo "🧪 Validating YAML syntax..."
+valid=true
 for file in "${!yaml_templates[@]}"; do
-  python3 -c "import yaml, sys; yaml.safe_load(open('$file'))" 2>/dev/null
+  python3 -c "import yaml; yaml.safe_load(open('$file'))" 2>/dev/null
   if [ $? -eq 0 ]; then
     echo "✅ YAML OK: $file"
   else
     echo "❌ YAML SYNTAX ERROR in $file"
+    valid=false
   fi
 done
+
+if [ "$valid" = false ]; then
+  echo "❌ Setup halted due to YAML errors."
+  exit 1
+fi
 
 # Git status summary (optional)
 if git rev-parse --git-dir > /dev/null 2>&1; then
