@@ -1,12 +1,9 @@
-# echo_main.py
-
 print("✅ echo_main.py is running...")
 
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity import CuriosityAgent
-from memory.echo_memory import load_yaml
-from yaml_utils import load  # Replaces direct PyYAML calls
+from yaml_utils import load  # ✅ This is our YAML loader now
 import os
 
 # Load active goals
