@@ -1,24 +1,24 @@
+# echo_main.py
+
 print("✅ echo_main.py is running...")
 
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity import CuriosityAgent
-from yaml_utils import load as load_yaml  # Replaces direct yaml.safe_load
+from memory.echo_memory import load_yaml
+from yaml_utils import load  # Replaces direct PyYAML calls
 import os
 
-# Load active goals with fallback to empty list
-goals = load_yaml("memory/GOALS.yaml", fallback=[])
+# Load active goals
+goals = load("memory/GOALS.yaml", fallback=[])
 print("🎯 Active Goals:")
 for g in goals:
-    print(f" - {g.get('name', str(g))}")
+    print(f" - {g}")
 
-# Load motif pressure data with fallback
-PRESSURE_PATH = os.path.join(os.path.dirname(__file__), 'memory/MOTIF_PRESSURE.yaml')
-motif_data = load_yaml(PRESSURE_PATH, fallback={"motif_pressure": {}})
-motif_pressure = motif_data.get("motif_pressure", {})
-
-if not motif_pressure:
-    print("⚠️  MOTIF_PRESSURE.yaml missing or empty. Run motif_pressure_tracker.py first.")
+# Load motif pressure
+motif_pressure = load("memory/MOTIF_PRESSURE.yaml", fallback={})
+if isinstance(motif_pressure, dict) and "motif_pressure" in motif_pressure:
+    motif_pressure = motif_pressure["motif_pressure"]
 
 print("\n💡 Motif Pressure Levels:")
 for tag, count in sorted(motif_pressure.items(), key=lambda x: -x[1]):
