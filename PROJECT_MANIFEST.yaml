@@ -1,0 +1,20 @@
+modules:
+  - echo_converse.py
+  - echo_daemon.py
+  - echo_feedback.py
+  - echo_logger.py
+  - echo_main.py
+  - log_reflection.py
+  - symbolic_daemon.py
+  - symbolic_utils.py
+  - query_symbol_pairs.py
+  - triad_translator.py
+  - visual_dashboard.py
+  - visualizer.py
+  - runtime/agent_sync.py
+  - runtime/echo_prompt_engine.py
+  - runtime/emergence_tracker.py
+  - memory/alignments.py
+  - memory/echo_memory.py
+  - memory/goals.py
+  - memory/symbol_mapper.py

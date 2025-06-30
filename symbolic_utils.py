@@ -1,5 +1,8 @@
-import re
+# symbolic_utils.py v0.3.1
+"""Utility helpers for symbolic decomposition and motif heuristics."""
+
 import random
+import re
 
 # -------------------------------
 # Symbol Registry for Decomposition
@@ -28,7 +31,9 @@ MOTIF_MAP = {
 # -------------------------------
 # Symbolic Decomposition
 # -------------------------------
-def decompose(statement):
+def decompose(statement: str) -> list[str]:
+    """Return base symbols detected in ``statement`` or ``['undefined']``."""
+
     tokens = re.findall(r"\b\w+\b", statement.lower())
     found = [symbol for symbol in BASE_SYMBOLS if symbol in tokens]
     return found if found else ["undefined"]
@@ -36,8 +41,10 @@ def decompose(statement):
 # -------------------------------
 # Motif Identification
 # -------------------------------
-def identify_motif(base_symbols):
-    motif_counts = {}
+def identify_motif(base_symbols: list[str]) -> str:
+    """Determine the dominant motif for a list of base symbols."""
+
+    motif_counts: dict[str, int] = {}
     for symbol in base_symbols:
         motif = MOTIF_MAP.get(symbol, "unclassified")
         motif_counts[motif] = motif_counts.get(motif, 0) + 1
@@ -50,7 +57,9 @@ def identify_motif(base_symbols):
 # -------------------------------
 # Symbolic Contrast Analyzer
 # -------------------------------
-def analyze_commonality(sym1, sym2):
+def analyze_commonality(sym1: str, sym2: str) -> tuple[str, float]:
+    """Compare two symbols and return a relation label and confidence."""
+
     motif1 = MOTIF_MAP.get(sym1)
     motif2 = MOTIF_MAP.get(sym2)
 
@@ -64,7 +73,9 @@ def analyze_commonality(sym1, sym2):
 # -------------------------------
 # Recursive Refinement
 # -------------------------------
-def refine(original, base_symbols, motif):
+def refine(original: str, base_symbols: list[str], motif: str) -> tuple[str, int]:
+    """Refine a statement based on its symbols and motif."""
+
     compression_level = 0
     refined = original
 
