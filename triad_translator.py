@@ -1,36 +1,62 @@
-import re import sys
+import argparse
+import yaml
+import os
 
-Define symbolic archetypes and keyword mappings
+# -------------------------------
+# Symbolic Logic Engine (Seeded)
+# -------------------------------
+def analyze_triad(triad):
+    # Placeholder triadic logic—expand recursively later
+    symbolic_roles = {
+        triad[0]: "Preserves structure; encodes memory",
+        triad[1]: "Injects novelty; disrupts pattern",
+        triad[2]: "Mediates adaptation between coherence and chaos"
+    }
 
-symbolic_archetypes = { "Division": ["cut", "split", "fracture", "break", "lose", "separate", "exile", "loss"], "Integration": ["weave", "stitch", "connect", "rebuild", "repair", "unify", "return"], "Memory": ["recall", "inherit", "remember", "hold", "archive", "carry"], "Naming": ["name", "label", "mark", "assign", "define"], "Emergence": ["open", "birth", "emerge", "start", "begin", "rise"], "Redemption": ["hope", "redeem", "resolve", "transform", "heal", "found"], "Expression": ["voice", "speak", "tell", "say", "declare"], "Descent": ["dive", "descend", "fall", "sink", "lower"] }
+    failure_modes = {
+        triad[0]: "Dogma, rigidity, symbolic atrophy",
+        triad[1]: "Noise, identity loss, incoherence",
+        triad[2]: "Loop collapse, aesthetic substitution"
+    }
 
-Create reverse lookup
+    transitions = {
+        f"{triad[0]} -> {triad[2]}": "Tolerance for contradiction",
+        f"{triad[1]} -> {triad[2]}": "Constraint-driven novelty retention",
+        f"{triad[2]} -> Collapse": "Recursive fidelity exceeds perturbation input"
+    }
 
-word_to_archetype = {word: archetype for archetype, words in symbolic_archetypes.items() for word in words}
+    paradox = f"If {triad[0]} preserves meaning, and {triad[1]} creates it, why does {triad[2]} destroy it when perfected?"
 
-def translate_to_symbolic_triads(sentence): words = re.findall(r'\b\w+\b', sentence.lower()) matched = [] seen_archetypes = set()
+    grounding = "Inject contradiction before compression. Let failure guide symbolic mutation."
 
-for word in words:
-    archetype = word_to_archetype.get(word)
-    if archetype and archetype not in seen_archetypes:
-        matched.append((word, archetype))
-        seen_archetypes.add(archetype)
-    if len(matched) == 3:
-        break
+    return {
+        "triad": triad,
+        "symbolic_roles": symbolic_roles,
+        "failure_modes": failure_modes,
+        "transitional_dynamics": transitions,
+        "emergent_paradox": paradox,
+        "grounding_heuristic": grounding
+    }
 
-return matched
+# -------------------------------
+# CLI + YAML Output
+# -------------------------------
+def main():
+    parser = argparse.ArgumentParser(description="Symbolic Triad Translator")
+    parser.add_argument("symbol1", type=str, help="First symbol (e.g. Coherence)")
+    parser.add_argument("symbol2", type=str, help="Second symbol (e.g. Perturbation)")
+    parser.add_argument("symbol3", type=str, help="Third symbol (e.g. Recursive Balance)")
 
-def main(): if len(sys.argv) < 2: print("Usage: python triad_translator.py 'Your sentence here'") return
+    args = parser.parse_args()
+    triad = [args.symbol1, args.symbol2, args.symbol3]
 
-sentence = sys.argv[1]
-triad = translate_to_symbolic_triads(sentence)
+    result = analyze_triad(triad)
 
-if triad:
-    print("\nSymbolic Triad:")
-    for word, archetype in triad:
-        print(f"  {word:<10} → {archetype}")
-else:
-    print("\nNo symbolic triad could be extracted from the sentence.")
+    output_file = "triad_output.yaml"
+    with open(output_file, "w") as f:
+        yaml.dump(result, f, sort_keys=False)
 
-if name == "main": main()
+    print(f"\n✅ Triad analysis complete. Output written to `{output_file}`.\n")
 
+if __name__ == "__main__":
+    main()
