@@ -1,0 +1,4 @@
+agents:
+  - name: LinguisticDivergenceAuditor
+    role: Detect cross-linguistic motif divergence
+    trigger: score_divergence >= threshold

@@ -218,3 +218,10 @@ Purpose: Updated GOALS.yaml with sample goals, added BELIEFS.yaml, and made emer
 🔁 Design Intent 0019: Emergence Cascade Activation
 Date: 2025-07-05
 Purpose: Queued ModulatorAgent, MotifDashboard, BeliefInputAgent, and EmergenceScanner for recursive cognition mode.
+
+---
+
+🔁 Design Intent 0020: Linguistic Divergence Auditor
+
+Date: 2025-07-06
+Purpose: Added LinguisticDivergenceAuditor to detect cross-linguistic motif drift and log high divergences into CURIOSITY_PIPELINE.yaml.
