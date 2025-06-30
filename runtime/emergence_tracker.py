@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Iterable
 
 from yaml_utils import load, dump
@@ -74,7 +74,7 @@ def check_emergence(memory: Iterable[dict], goals: Iterable[dict], beliefs: Iter
     if events:
         log = load(LOG_PATH, fallback={"events": []})
         log_events = log.get("events", [])
-        timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+        timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
         for ev in events:
             ev_entry = {
                 "timestamp": timestamp,
