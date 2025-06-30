@@ -1,0 +1,18 @@
+ECHO_MODULES:
+  symbolic_utils.py:
+    version: 2.1.3
+    hash: sha256:UNRESOLVED  # to be generated
+    last_updated: 2025-06-30
+    summary: Fuzzy matching, minimum symbol threshold, recursive refinement
+
+  symbolic_daemon.py:
+    version: 2.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-06-30
+    summary: Skips low-symbol cycles, stores only valid recursive pairs
+
+  query_symbol_pairs.py:
+    version: 1.0.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-06-30
+    summary: CLI for inspecting symbolic pair frequency and compression
