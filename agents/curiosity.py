@@ -2,6 +2,8 @@ import os
 import sys
 from datetime import datetime
 
+from runtime.echo_runtime_state import log_event
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from echo_logger import log_agent_activation
@@ -29,6 +31,7 @@ class CuriosityAgent:
     def generate_questions(self):
         print("[CuriosityAgent] Generating questions...")
         questions = []
+        log_event("CuriosityAgent", "generate", "Generated curiosity questions")
 
         for goal in self.goals:
             if goal.get("status") != "active":
