@@ -2,7 +2,7 @@
 import time
 import os
 import sys
-import yaml
+import yaml_utils
 from datetime import datetime, timezone
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent

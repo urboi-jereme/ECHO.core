@@ -18,3 +18,49 @@ modules:
   - memory/echo_memory.py
   - memory/goals.py
   - memory/symbol_mapper.py
+=======
+import os
+from pathlib import Path
+import yaml
+
+# Define project root and known active files
+project_root = Path("/mnt/data")
+active_files = [
+    "symbolic_daemon.py",
+    "symbolic_utils.py",
+    "query_symbol_pairs.py"
+]
+
+# Define the manifest content
+manifest = {
+    "project": "ECHO.Core",
+    "version": "v0.3.1",
+    "description": "Recursive symbolic cognition engine for ECHO architecture.",
+    "active_modules": {},
+    "deprecated_files": [],
+    "db": {
+        "name": "symbolic_language.db",
+        "tables": ["statements", "symbol_pairs"]
+    }
+}
+
+# Scan the directory and sort files
+all_files = {f.name: f for f in project_root.glob("*.py")}
+for filename, filepath in all_files.items():
+    if filename in active_files:
+        with open(filepath, 'r') as file:
+            header = next(file)
+            version = header.strip() if header.startswith("#") else "v0.3.1"
+        manifest["active_modules"][filename] = {
+            "path": str(filepath),
+            "version": version
+        }
+    else:
+        manifest["deprecated_files"].append(filename)
+
+# Save PROJECT_MANIFEST.yaml
+manifest_path = project_root / "PROJECT_MANIFEST.yaml"
+with open(manifest_path, "w") as f:
+    yaml.dump(manifest, f, sort_keys=False)
+
+manifest_path.name
