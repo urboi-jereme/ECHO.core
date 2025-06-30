@@ -1,5 +1,6 @@
 import yaml
 import os
+from yaml_utils import load
 
 GOALS_PATH = os.path.join(os.path.dirname(__file__), 'GOALS.yaml')
 
