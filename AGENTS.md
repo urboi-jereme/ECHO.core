@@ -15,6 +15,9 @@ ModulatorAgent	Adjusts agent weights based on symbolic and meta-pressure	META_PR
 CuriosityAgent	Generates questions from unresolved motifs	MOTIF_PRESSURE.yaml, GOALS.yaml, motif filters	Question list
 GoalEngine	Loads, stores, and tracks symbolic goal state	GOALS.yaml, AGENT_STATE.yaml	Filtered goals
 MotifPressureTracker	Calculates pressure from unresolved memory motifs	ECHO_MEMORY.yaml	MOTIF_PRESSURE.yaml
+BeliefInputAgent  Reflects on new belief candidates based on motif resonance    ECHO_MEMORY.yaml, MOTIF_PRESSURE.yaml    BELIEFS.yaml updated with suggestions
+MotifDashboard   Visualize motif pressure and recent activations  MOTIF_PRESSURE.yaml, emergence_log.yaml  Console dashboard
+EmergenceScanner   Scan memory, goals, and beliefs for emergence motifs   ECHO_MEMORY.yaml, GOALS.yaml, BELIEFS.yaml   Updates emergence_log.yaml
 
 
 

@@ -6,5 +6,15 @@ NavigatorAgent:
 CuriosityAgent:
   weight: 1.0
 ModulatorAgent:
-  weight: 0.8
+  weight: 1.0
+  status: queued
+MotifDashboard:
+  weight: 1.0
+  status: queued
+BeliefInputAgent:
+  weight: 1.0
+  status: queued
+EmergenceScanner:
+  weight: 1.0
+  status: queued
 active_motifs: []
