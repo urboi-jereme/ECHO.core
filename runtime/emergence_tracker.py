@@ -46,6 +46,8 @@ def check_emergence(memory: Iterable[dict], goals: Iterable[dict], beliefs: Iter
             })
 
     for goal in goals:
+        if not isinstance(goal, dict):
+            continue  # skip malformed goal
         motif = None
         tags = [str(t).lower() for t in goal.get("trigger_tags", [])]
         for m in _MOTIFS:
