@@ -6,6 +6,9 @@ from .echo_memory import (
     load_pressure,
     save_pressure,
     increment_pressure,
+    log_private_reflection,
+    log_public_summary,
+    sync_reflection,
 )
 from .alignments import (
     load_alignments,
