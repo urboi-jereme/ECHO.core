@@ -24,3 +24,7 @@ htmlcov/
 
 # OS files
 .DS_Store
+
+# Private reflection logs
+memory/ECHO_PRIVATE.yaml
+.private/
