@@ -3,11 +3,17 @@ print("✅ echo_main.py is running...")
 import os
 import sys
 import yaml
+from runtime.emergence_tracker import check_emergence
 from agents.intuition import IntuitionAgent
 from agents.navigator import NavigatorAgent
 from agents.curiosity import CuriosityAgent
 from memory.goals import load_goals
 from yaml_utils import load  # ✅ This is our YAML loader now
+
+# Load memory and beliefs
+memory_data = load("memory/ECHO_MEMORY.yaml", fallback={"echo_memory": []})
+memory_entries = memory_data.get("echo_memory", [])
+beliefs = load("memory/BELIEFS.yaml", fallback=[])
 
 # Load active goals
 goals = load("memory/GOALS.yaml", fallback=[])
@@ -27,6 +33,14 @@ print()
 intuition = IntuitionAgent()
 navigator = NavigatorAgent()
 curiosity = CuriosityAgent()
+
+# Check for symbolic emergence events
+emergence_events = check_emergence(memory_entries, goals, beliefs)
+if emergence_events:
+    print("\n🌟 Emergence Milestones:")
+    for ev in emergence_events:
+        print(f"• {ev['motif']} ({ev['source']})")
+    print()
 
 # Generate outputs
 print("🔮 Resonant Tags:")
