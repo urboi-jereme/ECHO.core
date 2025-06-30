@@ -188,3 +188,12 @@ Purpose: Verified new agent modules and memory schemas, replaced curiosity_agent
 
 Date: 2025-07-01
 Purpose: Implement private reflection logging with secure storage and public summaries.
+
+---
+
+🔁 Design Intent 0016: Memory Lessons from Research Session
+
+Date: 2025-07-02
+Purpose: Added three new insights to ECHO_MEMORY.yaml capturing lessons on
+symbolic memory usage, agent routing, and traceability of prompts. These entries
+link each lesson back to its originating prompt for better transparency.
