@@ -1,6 +1,16 @@
 IntuitionAgent:
   weight: 0.9
-ModulatorAgent:
-  weight: 1.0
 NavigatorAgent:
   weight: 0.75
+ModulatorAgent:
+  weight: 1.0
+  status: queued
+MotifDashboard:
+  weight: 1.0
+  status: queued
+BeliefInputAgent:
+  weight: 1.0
+  status: queued
+EmergenceScanner:
+  weight: 1.0
+  status: queued
