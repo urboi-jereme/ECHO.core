@@ -1,0 +1,8 @@
+triad_001:
+  symbols: ["🔥", "🪞", "🗿"]
+  semantic_roles:
+    "🔥": Leader
+    "🪞": Mirror
+    "🗿": Foundation
+  validation_score: 0.0
+  notes: "seed triad for initial motif analysis"
