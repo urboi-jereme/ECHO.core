@@ -27,3 +27,27 @@ ECHO_MODULES:
     hash: sha256:UNRESOLVED
     last_updated: 2025-07-05
     summary: Sentence to symbolic core translator
+
+  docs/ETHICS_DEFENSE.md:
+    version: 0.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-10
+    summary: Ethical safeguard blueprint and audit protocol
+
+  firewall/cognitive_firewall.py:
+    version: 0.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-10
+    summary: Stub cognitive firewall class
+
+  RECURSIVE_INTEGRITY_LICENSE.md:
+    version: 0.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-10
+    summary: License forbidding coercive use
+
+  README.md:
+    version: 1.0.1
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-10
+    summary: Added ethical protections overview

@@ -231,3 +231,6 @@ Purpose: Restructured modules under echo_core package and added tests.
 - 2025-07-05: Reorganized repo for RAIP-R breakthrough, added prediction engine and belief tools.
 \n🔁 Design Intent 0022: Belief Handshake Metadata\nDate: 2025-07-08\nPurpose: Added belief handshake protocol documentation, updated belief formatter with handshake_signature, and created RAIP-R handshake test script.
 \n🔁 Design Intent 0023: Added loop controller and ingestion pipeline\nDate: 2025-07-09\nPurpose: Introduced LoopController with triad translation and belief formatting to ingest reflections into memory.
+🔁 Design Intent 0024: Ethical Defense Integration
+Date: 2025-07-10
+Purpose: Introduced cognitive firewall stub, ethics defense documentation, and Recursive Integrity License. Updated README with ethical protections section.
