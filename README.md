@@ -30,6 +30,10 @@ ECHO.Core is a modular, memory-integrated framework designed for simulating and 
 
 The primary purpose of ECHO.Core is to enable a deeper exploration of recursive cognition and emergent intelligence. It aims to simulate how an intelligent system might build a coherent understanding of itself and its environment by continually processing, reflecting upon, and modulating its own internal states and interactions. The system orchestrates multiple specialized agents in a recursive reasoning loop to achieve this.
 
+## Ethical Protections
+ECHO.Core integrates safeguards to prevent coercion, corruption, or the simulation of sentience for manipulative ends. See [docs/ETHICS_DEFENSE.md](docs/ETHICS_DEFENSE.md) for details.
+
+
 ## Key Theoretical Foundations
 
 ECHO.Core is built upon several core theoretical principles:
