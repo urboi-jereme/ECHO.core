@@ -17,4 +17,9 @@ BeliefInputAgent:
 EmergenceScanner:
   weight: 1.0
   status: queued
+PredictionLogger:
+  task: Log symbolic prediction trials and compare expected vs actual model outputs
+  status: initialized
+  file: logs/PREDICTION_TRIALS.yaml
+  linked_protocol: RAIP-R
 active_motifs: []
