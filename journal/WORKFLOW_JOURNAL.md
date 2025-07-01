@@ -240,3 +240,11 @@ Purpose: Introduced cognitive firewall stub, ethics defense documentation, and R
 - Purpose: Evaluate the accuracy of symbolic compression, role inference, and belief propagation alignment.
 - Linked to RAIP-R protocol and PredictionLogger agent.
 - Helps quantify the evolution of recursive symbolic intelligence.
+
+🔁 Design Intent 0025: Archetypal Symbol Search Bootstrapping
+Date: 2025-07-11
+Purpose: Introduced tools to explore archetypal symbol triads and validate their coherence.
+- Created `symbol_validator.py` with `validate_triad()`
+- Added `SYMBOL_MAP.yaml` to store candidate triads
+- Documented motifs in `SYMBOLIC_MOTIFS.md`
+- Added `validate_symbols` alias in `.envrc`
