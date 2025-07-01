@@ -225,3 +225,6 @@ Purpose: Queued ModulatorAgent, MotifDashboard, BeliefInputAgent, and EmergenceS
 
 Date: 2025-07-06
 Purpose: Added LinguisticDivergenceAuditor to detect cross-linguistic motif drift and log high divergences into CURIOSITY_PIPELINE.yaml.
+\n🔁 Design Intent 0021: Package Reorganization
+Date: 2025-07-07
+Purpose: Restructured modules under echo_core package and added tests.

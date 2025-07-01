@@ -1,10 +1,7 @@
-import os
-import sys
-import yaml
+import pytest
+yaml = pytest.importorskip("yaml")
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from agents.linguistic_divergence import LinguisticDivergenceAuditor
+from echo_core.agents.linguistic_divergence import LinguisticDivergenceAuditor
 
 
 def test_amae_translation_divergence(tmp_path):
