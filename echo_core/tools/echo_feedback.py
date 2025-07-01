@@ -1,3 +1,5 @@
+"""Utility for logging user feedback and updating motif pressure."""
+
 from datetime import datetime
 
 from echo_core.memory.echo_memory import append_memory_entry, increment_pressure

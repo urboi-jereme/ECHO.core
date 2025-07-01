@@ -1,3 +1,5 @@
+"""Simple console dashboard for runtime motif pressure visualization."""
+
 # visual_dashboard.py
 
 import json

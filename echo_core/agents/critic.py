@@ -17,11 +17,14 @@ Outputs:
 - Warnings to avoid recursive resonance traps
 """
 
+from echo_core.utils.echo_logger import log_agent_activation
+
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from echo_logger import log_agent_activation
+
 
 class CriticAgent:
     def __init__(self):

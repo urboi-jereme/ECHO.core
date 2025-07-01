@@ -1,11 +1,23 @@
+"""Logging helpers for agent activations and custom events."""
+
+from pathlib import Path
+from datetime import datetime
+import os
+
 import sys
 import os
 from datetime import datetime
+
 
 try:
     yaml = __import__("yaml")
 except Exception:  # pragma: no cover - optional dependency
     yaml = None
+
+# Paths relative to repository root
+ROOT_DIR = Path(__file__).resolve().parents[1]
+LOG_PATH = ROOT_DIR / "journal" / "ECHO_LOG.md"
+AGENT_STATE_PATH = ROOT_DIR / "AGENT_STATE.yaml"
 
 # Root dir setup
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
