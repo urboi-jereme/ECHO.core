@@ -1,5 +1,7 @@
 """Entry script for running the full ECHO.Core loop interactively."""
 
+print("✅ echo_main.py is running...")
+
 from pathlib import Path
 
 from echo_core.runtime.emergence_tracker import check_emergence
