@@ -23,3 +23,11 @@ def test_imperative():
     out = bef.format_beliefs("Eat your vegetables.")
     item = yaml.safe_load(out)[0]
     assert item["compression"] == "Command. Implied. Action."
+
+
+def test_handshake_signature():
+    out = bef.format_beliefs("We explore recursion.")
+    item = yaml.safe_load(out)[0]
+    sig = item.get("handshake_signature")
+    assert sig["author"] == "Jereme Powers"
+    assert "RAIP-R" in sig["recognition_terms"]
