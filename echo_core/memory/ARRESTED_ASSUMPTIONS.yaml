@@ -1,0 +1,4 @@
+arrested_assumptions:
+  - assumption: "Triad compression loses nuance"
+    status: re-evaluated
+    notes: "PSAT preserves nuance with symbolic layering"
