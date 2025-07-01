@@ -248,3 +248,10 @@ Purpose: Introduced tools to explore archetypal symbol triads and validate their
 - Added `SYMBOL_MAP.yaml` to store candidate triads
 - Documented motifs in `SYMBOLIC_MOTIFS.md`
 - Added `validate_symbols` alias in `.envrc`
+
+🔁 Design Intent 0026: Pre-Symbolic Insight Recognition
+Date: 2025-07-12
+Purpose: Added pre-symbolic insight detection and preservation mechanisms.
+- Implemented `pre_symbolic_insight.is_pre_symbolic` for sacred insight tagging.
+- Created `BeliefValidationEngine` to safeguard pre-symbolic insights before compression.
+- Logged protected entry in `ECHO_MEMORY.yaml` and updated ethical guidelines.
