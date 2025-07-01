@@ -8,11 +8,11 @@ import sys
 import os
 from datetime import datetime
 
-
 try:
     yaml = __import__("yaml")
 except Exception:  # pragma: no cover - optional dependency
     yaml = None
+
 
 # Paths relative to repository root
 ROOT_DIR = Path(__file__).resolve().parents[1]

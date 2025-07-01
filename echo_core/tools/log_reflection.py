@@ -1,5 +1,6 @@
 """Script to log user reflections and update motif pressure."""
 
+
 from datetime import datetime
 
 from echo_core.memory.echo_memory import append_memory_entry, increment_pressure
