@@ -1,3 +1,4 @@
+# triad_translator.py v0.3.1
 import yaml
 
 def extract_propositional_cores(sentence):
