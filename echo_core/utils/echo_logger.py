@@ -1,3 +1,9 @@
+"""Logging helpers for agent activations and custom events."""
+
+from pathlib import Path
+from datetime import datetime
+import os
+
 import sys
 import os
 from datetime import datetime
@@ -7,6 +13,13 @@ try:
 except Exception:  # pragma: no cover - optional dependency
     yaml = None
 
+
+# Paths relative to repository root
+ROOT_DIR = Path(__file__).resolve().parents[1]
+LOG_PATH = ROOT_DIR / "journal" / "ECHO_LOG.md"
+AGENT_STATE_PATH = ROOT_DIR / "AGENT_STATE.yaml"
+
+
 # Root dir setup
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
 if ROOT_DIR not in sys.path:
@@ -14,6 +27,7 @@ if ROOT_DIR not in sys.path:
 
 LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
 AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+
 
 # Optional .env loading for toggles
 try:
@@ -58,5 +72,3 @@ def log_custom_event(event: str):
     entry = f"- [{timestamp}] {event}\n"
     with open(LOG_PATH, "a") as f:
         f.write(entry)
-
-# 🧠 Optional patch injection
