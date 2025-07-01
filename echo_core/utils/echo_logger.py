@@ -4,6 +4,12 @@ from pathlib import Path
 from datetime import datetime
 import os
 
+
+import sys
+import os
+from datetime import datetime
+
+
 try:
     yaml = __import__("yaml")
 except Exception:  # pragma: no cover - optional dependency
@@ -13,6 +19,15 @@ except Exception:  # pragma: no cover - optional dependency
 ROOT_DIR = Path(__file__).resolve().parents[1]
 LOG_PATH = ROOT_DIR / "journal" / "ECHO_LOG.md"
 AGENT_STATE_PATH = ROOT_DIR / "AGENT_STATE.yaml"
+
+# Root dir setup
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
+AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+
 
 # Optional .env loading for toggles
 try:

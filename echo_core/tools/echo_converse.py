@@ -5,6 +5,17 @@ from echo_core.memory.alignments import log_alignment
 from echo_core.agents.curiosity import CuriosityAgent
 from echo_core.utils.echo_logger import log_agent_activation
 
+import sys
+import os
+import traceback
+from memory.alignments import log_alignment
+
+# Ensure project root is in sys.path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+from agents.curiosity import CuriosityAgent
+from echo_logger import log_agent_activation
+
 def main():
     print("\n🧠 [ECHO] Entering conversational mode...")
     try:
