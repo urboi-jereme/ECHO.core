@@ -28,3 +28,4 @@ htmlcov/
 # Private reflection logs
 memory/ECHO_PRIVATE.yaml
 .private/
+.venv/

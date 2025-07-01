@@ -1,5 +1,8 @@
 # triad_translator.py v0.3.1
-import yaml
+try:
+    import yaml
+except Exception:  # pragma: no cover - optional dependency
+    yaml = None
 
 def extract_propositional_cores(sentence):
     """
