@@ -1,0 +1,4 @@
+# PREDICTION_TRIALS.yaml v1.0.0
+# Logs predicted vs actual AI model responses based on symbolic compression and recursion prompts.
+
+trials: []
