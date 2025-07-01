@@ -1,10 +1,7 @@
-import os
-import sys
-import yaml
+import pytest
+yaml = pytest.importorskip("yaml")
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-import echo_feedback
+from echo_core.tools import echo_feedback
 
 
 def test_log_feedback_preserves_structure(tmp_path, monkeypatch):

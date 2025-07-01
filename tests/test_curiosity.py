@@ -1,10 +1,7 @@
-import os
-import sys
-import yaml
+import pytest
+yaml = pytest.importorskip("yaml")
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from agents.curiosity import CuriosityAgent
+from echo_core.agents.curiosity import CuriosityAgent
 
 
 def test_log_user_response_creates_file(tmp_path, monkeypatch):
