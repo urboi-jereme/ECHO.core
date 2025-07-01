@@ -1,11 +1,8 @@
-import os
-import sys
-import yaml
+import pytest
+yaml = pytest.importorskip("yaml")
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from agents.belief_input import BeliefInputAgent
-from agents.emergence_scanner import EmergenceScanner
+from echo_core.agents.belief_input import BeliefInputAgent
+from echo_core.agents.emergence_scanner import EmergenceScanner
 
 
 def test_belief_input_agent(tmp_path):
