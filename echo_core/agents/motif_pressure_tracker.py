@@ -61,12 +61,14 @@ def save_pressure(pressure: dict) -> None:
 if __name__ == "__main__":
     log_agent_activation("MotifPressureTracker", reason="recalculate motif pressure")
 
+
 def save_pressure(pressure):
     with open(PRESSURE_FILE, "w") as f:
         yaml.dump({"motif_pressure": pressure}, f, sort_keys=False)
     print(f"✅ Motif pressure written to {PRESSURE_FILE}")
 
 if __name__ == "__main__":
+
 
     print("🔍 Computing motif pressure from memory...")
     pressure = compute_motif_pressure()
