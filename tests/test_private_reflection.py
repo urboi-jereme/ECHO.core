@@ -1,10 +1,7 @@
-import os
-import sys
-import yaml
+import pytest
+yaml = pytest.importorskip("yaml")
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from memory import echo_memory
+from echo_core.memory import echo_memory
 
 
 def test_sync_reflection_private_and_public(tmp_path, monkeypatch):

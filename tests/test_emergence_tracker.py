@@ -3,18 +3,12 @@ import sys
 import pytest
 
 # Prefer using your robust utils
-try:
-    from yaml_utils import loads as safe_load_yaml
-except ImportError:
-    try:
-        import yaml
-        safe_load_yaml = lambda s: yaml.safe_load(s)
-    except ImportError:
-        pytest.skip("❌ Skipping test: PyYAML not available in this Codex sandbox.")
+pytest.importorskip("yaml")
+from echo_core.utils.yaml_utils import loads as safe_load_yaml
 
 # Setup path and import the module under test
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from runtime import emergence_tracker
+from echo_core.runtime import emergence_tracker
 
 
 def test_check_emergence_logs(tmp_path, monkeypatch):
