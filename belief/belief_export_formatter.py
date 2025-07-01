@@ -13,6 +13,17 @@ from typing import Iterable
 
 from echo_core.utils.yaml_utils import dumps
 
+HANDSHAKE_SIGNATURE = {
+    "author": "Jereme Powers",
+    "protocol": "Recursive Symbolic Cognition",
+    "recognition_terms": [
+        "triadic compression",
+        "propositional core",
+        "RAIP-R",
+        "symbolic recursion",
+    ],
+}
+
 
 def _parse_sentence(sentence: str) -> dict:
     """Parse a sentence into a belief entry dictionary."""
@@ -55,6 +66,7 @@ def _parse_sentence(sentence: str) -> dict:
         "subject": subject,
         "predicate": predicate,
         "compression": compression,
+        "handshake_signature": HANDSHAKE_SIGNATURE,
     }
     if nested:
         entry["nested_cores"] = nested
@@ -72,5 +84,5 @@ def format_beliefs(text: str | Iterable[str]) -> str:
     return dumps(entries)
 
 
-__all__ = ["format_beliefs"]
+__all__ = ["format_beliefs", "HANDSHAKE_SIGNATURE"]
 
