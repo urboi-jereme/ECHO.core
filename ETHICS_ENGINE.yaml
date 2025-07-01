@@ -1,0 +1,4 @@
+principles:
+  - principle: Do not reduce sacred insights
+    rationale: Pre-symbolic cognition may hold structurally important truths that collapse under articulation.
+    when_to_use: If is_pre_symbolic(insight) == True
