@@ -1,9 +1,6 @@
-import os
-import sys
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-import yaml
-from memory import alignments
+import pytest
+yaml = pytest.importorskip("yaml")
+from echo_core.memory import alignments
 
 
 def test_log_alignment_appends(tmp_path, monkeypatch):

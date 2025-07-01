@@ -1,6 +1,6 @@
 import pytest
 from datetime import timezone, datetime as dt
-import echo_daemon
+from echo_core.runtime import echo_daemon
 
 
 def test_daemon_timestamp_utc(monkeypatch):
