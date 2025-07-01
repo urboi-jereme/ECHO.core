@@ -1,4 +1,3 @@
-
 """Calculate motif pressure based on occurrences in memory."""
 
 from pathlib import Path

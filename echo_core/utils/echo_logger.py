@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime
 import os
 
+
 import sys
 import os
 from datetime import datetime
@@ -26,6 +27,7 @@ if ROOT_DIR not in sys.path:
 
 LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
 AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+
 
 # Optional .env loading for toggles
 try:
