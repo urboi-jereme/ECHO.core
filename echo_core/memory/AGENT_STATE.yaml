@@ -14,3 +14,6 @@ BeliefInputAgent:
 EmergenceScanner:
   weight: 1.0
   status: queued
+MetaAnalysisAgent:
+  weight: 1.0
+  status: queued
