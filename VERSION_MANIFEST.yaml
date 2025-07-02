@@ -57,7 +57,12 @@ ECHO_MODULES:
     last_updated: 2025-07-13
     summary: Symbolic proof heuristics and model definition
   DISCOVERIES.md:
-    version: 0.1.0
+    version: 1.4
     hash: sha256:UNRESOLVED
-    last_updated: 2025-07-13
+    last_updated: 2025-07-15
     summary: Log of key philosophical and technical breakthroughs
+  echo_core/memory/ECHO_MEMORY.yaml:
+    version: 1.9
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-15
+    summary: Added "The Dreamer and the Dream" motif
