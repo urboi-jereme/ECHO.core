@@ -10,3 +10,6 @@ __all__ = [
     "CuriosityAgent",
     "ModulatorAgent",
 ]
+from .meta_analysis import MetaAnalysisAgent
+__all__.append("MetaAnalysisAgent")
+

@@ -23,3 +23,6 @@ PredictionLogger:
   file: logs/PREDICTION_TRIALS.yaml
   linked_protocol: RAIP-R
 active_motifs: []
+MetaAnalysisAgent:
+  weight: 1.0
+  status: queued

@@ -51,3 +51,13 @@ ECHO_MODULES:
     hash: sha256:UNRESOLVED
     last_updated: 2025-07-10
     summary: Added ethical protections overview
+  PROOF_ENGINE.yaml:
+    version: 0.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-13
+    summary: Symbolic proof heuristics and model definition
+  DISCOVERIES.md:
+    version: 0.1.0
+    hash: sha256:UNRESOLVED
+    last_updated: 2025-07-13
+    summary: Log of key philosophical and technical breakthroughs

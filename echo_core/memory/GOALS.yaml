@@ -15,3 +15,8 @@ goals:
     trigger_tags:
       - motif
       - emergence
+  - goal: Validate file state against VERSION_MANIFEST
+    status: pending
+    trigger_tags:
+      - integrity
+      - proof_engine
