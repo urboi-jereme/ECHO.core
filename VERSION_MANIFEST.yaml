@@ -16,7 +16,7 @@ ECHO_MODULES:
     hash: sha256:UNRESOLVED
     last_updated: 2025-06-30
     summary: CLI for inspecting symbolic pair frequency and compression
-  raip_r_engine.py:
+  echo_core/tools/raip_r_engine.py:
     version: 0.1.0
     hash: sha256:UNRESOLVED
     last_updated: 2025-07-05

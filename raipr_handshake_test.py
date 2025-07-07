@@ -1,7 +1,7 @@
 """Run a small RAIP-R cycle and output beliefs with handshake metadata."""
 from pathlib import Path
 
-from core.raip_r_engine import RAIPREngine
+from echo_core.tools.raip_r_engine import RAIPREngine
 from echo_core.tools import belief_export_formatter as bef
 
 
