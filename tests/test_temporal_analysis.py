@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from universalCode.utils import temporal_analysis
+from universalCode.echo_core.utils import temporal_analysis
 
 
 def test_update_temporal_log_creates_file(tmp_path, monkeypatch):

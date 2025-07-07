@@ -17,3 +17,6 @@ EmergenceScanner:
 MetaAnalysisAgent:
   weight: 1.0
   status: queued
+RAIPREngine:
+  weight: 1.0
+  status: queued

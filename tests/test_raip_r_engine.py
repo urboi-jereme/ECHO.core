@@ -1,6 +1,6 @@
 import pytest
 pytest.importorskip("yaml")
-from universalCode.core.raip_r_engine import RAIPREngine
+from universalCode.echo_core.tools.raip_r_engine import RAIPREngine
 
 def test_prediction(tmp_path):
     mem = tmp_path / "ECHO_MEMORY.yaml"

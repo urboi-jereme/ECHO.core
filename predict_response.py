@@ -4,7 +4,7 @@
 from pathlib import Path
 import sys
 
-from core.raip_r_engine import RAIPREngine
+from echo_core.tools.raip_r_engine import RAIPREngine
 
 
 def main() -> None:
