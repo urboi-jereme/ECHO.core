@@ -1,6 +1,6 @@
 import pytest
 yaml = pytest.importorskip("yaml")
-from echo_core.tools import belief_export_formatter as bef
+from universalCode.echo_core.tools import belief_export_formatter as bef
 
 
 def test_parse_simple_svc():

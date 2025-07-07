@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from echo_core.tools import echo_feedback
+from universalCode.echo_core.tools import echo_feedback
 
 
 def test_log_feedback_preserves_structure(tmp_path, monkeypatch):

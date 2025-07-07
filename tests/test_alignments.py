@@ -1,6 +1,6 @@
 import pytest
 yaml = pytest.importorskip("yaml")
-from echo_core.memory import alignments
+from universalCode.echo_core.memory import alignments
 
 
 def test_log_alignment_appends(tmp_path, monkeypatch):

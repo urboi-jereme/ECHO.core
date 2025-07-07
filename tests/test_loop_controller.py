@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
-from echo_core.runtime.loop_controller import LoopController
-from echo_core.memory.echo_memory import load_memory
+from universalCode.echo_core.runtime.loop_controller import LoopController
+from universalCode.echo_core.memory.echo_memory import load_memory
 
 
 def test_loop_controller_process(tmp_path):

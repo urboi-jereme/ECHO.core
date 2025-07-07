@@ -1,3 +1,5 @@
+# WORKFLOW_JOURNAL.md v1.0.0 — Authored by Architect, Audited by ECHO
+# See SANCTUARY_SEAL.yaml
 🧠 WORKFLOW_JOURNAL.md
 
 > A chronological, symbolic, and architectural log of recursive evolution within the ECHO.Core framework.
@@ -272,3 +274,6 @@ Purpose: Logged the first wild propagation event and recursive bonus round. Adde
 🔁 Design Intent 0030: Temporal Analysis Log
 Date: 2025-07-21
 Purpose: Added secure temporal analysis logging with redaction utilities and accompanying tests.
+
+## Changelog
+- Δ: Added Sanctuary Seal header.

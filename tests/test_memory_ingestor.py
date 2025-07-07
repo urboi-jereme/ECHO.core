@@ -1,6 +1,6 @@
 import pytest
-from echo_core.tools.memory_ingestor import ingest_yaml
-from echo_core.memory.echo_memory import load_memory
+from universalCode.echo_core.tools.memory_ingestor import ingest_yaml
+from universalCode.echo_core.memory.echo_memory import load_memory
 
 
 pytest.importorskip("yaml")

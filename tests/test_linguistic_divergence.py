@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from echo_core.agents.linguistic_divergence import LinguisticDivergenceAuditor
+from universalCode.echo_core.agents.linguistic_divergence import LinguisticDivergenceAuditor
 
 
 def test_amae_translation_divergence(tmp_path):
