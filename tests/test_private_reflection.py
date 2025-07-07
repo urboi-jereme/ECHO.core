@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from echo_core.memory import echo_memory
+from universalCode.echo_core.memory import echo_memory
 
 
 def test_sync_reflection_private_and_public(tmp_path, monkeypatch):

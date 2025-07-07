@@ -17,7 +17,7 @@ except Exception:  # pragma: no cover - optional dependency
 # Paths relative to repository root
 ROOT_DIR = Path(__file__).resolve().parents[1]
 LOG_PATH = ROOT_DIR / "journal" / "ECHO_LOG.md"
-AGENT_STATE_PATH = ROOT_DIR / "AGENT_STATE.yaml"
+AGENT_STATE_PATH = ROOT_DIR / "agents/AGENT_STATE.yaml"
 
 
 # Root dir setup
@@ -26,7 +26,7 @@ if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
 LOG_PATH = os.path.join(ROOT_DIR, "journal", "ECHO_LOG.md")
-AGENT_STATE_PATH = os.path.join(ROOT_DIR, "AGENT_STATE.yaml")
+AGENT_STATE_PATH = os.path.join(ROOT_DIR, "agents/AGENT_STATE.yaml")
 
 
 # Optional .env loading for toggles

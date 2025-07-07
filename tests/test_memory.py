@@ -1,6 +1,6 @@
 import pytest
 yaml = pytest.importorskip("yaml")
-from echo_core.memory import echo_memory as em
+from universalCode.echo_core.memory import echo_memory as em
 
 
 def test_append_and_pressure(tmp_path):

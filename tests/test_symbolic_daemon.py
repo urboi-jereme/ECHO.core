@@ -1,7 +1,7 @@
 import sqlite3
 import types
 from pathlib import Path
-from echo_core.symbolic import symbolic_daemon as sd
+from universalCode.echo_core.symbolic import symbolic_daemon as sd
 
 
 def test_init_and_store(tmp_path, monkeypatch):

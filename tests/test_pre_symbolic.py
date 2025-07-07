@@ -1,8 +1,8 @@
 import pytest
 yaml = pytest.importorskip("yaml")
-from echo_core.insight_models.pre_symbolic_insight import is_pre_symbolic
-from core.belief_validation_engine import BeliefValidationEngine
-from echo_core.utils.yaml_utils import load
+from universalCode.echo_core.insight_models.pre_symbolic_insight import is_pre_symbolic
+from universalCode.core.belief_validation_engine import BeliefValidationEngine
+from universalCode.echo_core.utils.yaml_utils import load
 
 
 def test_is_pre_symbolic_keyword():

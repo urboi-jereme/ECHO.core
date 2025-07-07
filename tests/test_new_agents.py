@@ -1,8 +1,8 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from echo_core.agents.belief_input import BeliefInputAgent
-from echo_core.agents.emergence_scanner import EmergenceScanner
+from universalCode.echo_core.agents.belief_input import BeliefInputAgent
+from universalCode.echo_core.agents.emergence_scanner import EmergenceScanner
 
 
 def test_belief_input_agent(tmp_path):
