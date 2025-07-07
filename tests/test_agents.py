@@ -2,8 +2,8 @@ from pathlib import Path
 import pytest
 
 yaml = pytest.importorskip("yaml")
-from echo_core.agents import IntuitionAgent, NavigatorAgent, ModulatorAgent, CuriosityAgent
-from echo_core.memory.echo_memory import append_memory_entry, increment_pressure
+from universalCode.echo_core.agents import IntuitionAgent, NavigatorAgent, ModulatorAgent, CuriosityAgent
+from universalCode.echo_core.memory.echo_memory import append_memory_entry, increment_pressure
 
 
 def test_intuition_basic(tmp_path):

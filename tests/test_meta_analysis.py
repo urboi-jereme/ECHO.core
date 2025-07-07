@@ -1,7 +1,7 @@
 import pytest
 pytest.importorskip("yaml")
 
-from echo_core.agents.meta_analysis import MetaAnalysisAgent
+from universalCode.echo_core.agents.meta_analysis import MetaAnalysisAgent
 
 
 def test_meta_analysis_detects_contradictions(tmp_path):

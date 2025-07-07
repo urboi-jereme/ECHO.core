@@ -1,3 +1,5 @@
+# AGENT_STATE.yaml v1.0.0 — Authored by Architect, Audited by ECHO
+# See SANCTUARY_SEAL.yaml
 log_on_activation: true
 IntuitionAgent:
   weight: 1.0

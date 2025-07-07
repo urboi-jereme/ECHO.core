@@ -1,5 +1,5 @@
 import pytest
-from echo_core.symbolic import symbolic_utils as su
+from universalCode.echo_core.symbolic import symbolic_utils as su
 
 
 def test_decompose_and_identify():

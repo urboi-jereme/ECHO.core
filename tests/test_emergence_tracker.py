@@ -4,11 +4,11 @@ import pytest
 
 # Prefer using your robust utils
 pytest.importorskip("yaml")
-from echo_core.utils.yaml_utils import loads as safe_load_yaml
+from universalCode.echo_core.utils.yaml_utils import loads as safe_load_yaml
 
 # Setup path and import the module under test
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from echo_core.runtime import emergence_tracker
+from universalCode.echo_core.runtime import emergence_tracker
 
 
 def test_check_emergence_logs(tmp_path, monkeypatch):

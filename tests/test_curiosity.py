@@ -1,7 +1,7 @@
 import pytest
 yaml = pytest.importorskip("yaml")
 
-from echo_core.agents.curiosity import CuriosityAgent
+from universalCode.echo_core.agents.curiosity import CuriosityAgent
 
 
 def test_log_user_response_creates_file(tmp_path, monkeypatch):
