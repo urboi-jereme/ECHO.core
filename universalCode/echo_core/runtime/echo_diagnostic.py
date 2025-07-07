@@ -32,7 +32,7 @@ def check_journal(root):
 
 def run_diagnostics(project_root: str | None = None):
     """Run diagnostic checks for the ECHO.Core project."""
-    root = Path(project_root) if project_root else Path(__file__).resolve().parent.parent
+    root = Path(project_root) if project_root else Path(__file__).resolve().parents[3]
 
     print("🧠 Running ECHO.Core Diagnostic Checks...\n")
 

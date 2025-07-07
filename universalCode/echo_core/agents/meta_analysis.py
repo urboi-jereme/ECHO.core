@@ -8,7 +8,7 @@ class MetaAnalysisAgent:
 
     def __init__(self, memory_file: str | Path | None = None,
                  assumptions_file: str | Path | None = None):
-        base = Path(__file__).resolve().parent.parent / "memory"
+        base = Path(__file__).resolve().parents[3] / "memory"
         self.memory_file = Path(memory_file) if memory_file else base / "ECHO_MEMORY.yaml"
         self.assumptions_file = Path(assumptions_file) if assumptions_file else base / "ARRESTED_ASSUMPTIONS.yaml"
 

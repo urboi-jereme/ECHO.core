@@ -6,7 +6,7 @@ from collections import defaultdict
 from echo_core.utils.echo_logger import log_agent_activation
 from echo_core.utils.yaml_utils import load, dump
 
-BASE_PATH = Path(__file__).resolve().parent.parent
+BASE_PATH = Path(__file__).resolve().parents[3]
 MEMORY_PATH = BASE_PATH / "memory"
 PRESSURE_FILE = MEMORY_PATH / "MOTIF_PRESSURE.yaml"
 
@@ -18,7 +18,7 @@ import sys
 import os
 
 # Add the root ECHO.core path to sys.path so echo_logger can be imported
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", ".."))
 sys.path.insert(0, BASE_PATH)
 
 from echo_logger import log_agent_activation
@@ -27,7 +27,7 @@ from collections import defaultdict
 
 log_agent_activation("MotifPressureTracker", reason="Recalculate motif pressure from ECHO_MEMORY")
 
-BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", ".."))
 MEMORY_PATH = os.path.join(BASE_PATH, "memory")
 OUTPUT_PATH = os.path.join(MEMORY_PATH, "MOTIF_PRESSURE.yaml")
 PRESSURE_FILE = OUTPUT_PATH

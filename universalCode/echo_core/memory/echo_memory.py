@@ -3,10 +3,11 @@ from datetime import datetime
 
 from echo_core.utils.yaml_utils import load, dump
 
-MEMORY_PATH = Path(__file__).resolve().parent / 'ECHO_MEMORY.yaml'
-PRESSURE_PATH = Path(__file__).resolve().parent / 'MOTIF_PRESSURE.yaml'
-PRIVATE_PATH = Path(__file__).resolve().parent / 'ECHO_PRIVATE.yaml'
-REPORTS_DIR = Path(__file__).resolve().parent.parent / '.private' / 'reports'
+ROOT_DIR = Path(__file__).resolve().parents[3]
+MEMORY_PATH = ROOT_DIR / 'memory' / 'ECHO_MEMORY.yaml'
+PRESSURE_PATH = ROOT_DIR / 'memory' / 'MOTIF_PRESSURE.yaml'
+PRIVATE_PATH = ROOT_DIR / 'memory' / 'ECHO_PRIVATE.yaml'
+REPORTS_DIR = ROOT_DIR / '.private' / 'reports'
 
 
 def load_memory(path: str | Path = MEMORY_PATH):

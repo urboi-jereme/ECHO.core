@@ -15,7 +15,7 @@ from echo_core.utils.echo_logger import log_custom_event
 from echo_core.utils import yaml_utils
 
 BASE_DIR = Path(__file__).resolve().parent
-MEMORY_DIR = BASE_DIR / ".." / "memory"
+MEMORY_DIR = Path(__file__).resolve().parents[3] / "memory"
 PRESSURE_PATH = MEMORY_DIR / "MOTIF_PRESSURE.yaml"
 GOALS_PATH = MEMORY_DIR / "GOALS.yaml"
 INTERVAL_SECONDS = 600  # 10 minutes

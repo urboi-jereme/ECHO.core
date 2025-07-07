@@ -10,7 +10,7 @@ from echo_core.memory.goals import load_goals
 from echo_core.utils.yaml_utils import load
 
 # Load memory and beliefs
-base = Path(__file__).resolve().parent.parent / "memory"
+base = Path(__file__).resolve().parents[3] / "memory"
 memory_data = load(base / "ECHO_MEMORY.yaml", fallback={"echo_memory": []})
 memory_entries = memory_data.get("echo_memory", [])
 beliefs = load(base / "BELIEFS.yaml", fallback=[])

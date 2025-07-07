@@ -20,7 +20,7 @@ from echo_core.utils.yaml_utils import load
 class IntuitionAgent:
     def __init__(self, memory_file: str | Path | None = None):
         if memory_file is None:
-            memory_file = Path(__file__).resolve().parent.parent / "memory" / "ECHO_MEMORY.yaml"
+            memory_file = Path(__file__).resolve().parents[3] / "memory" / "ECHO_MEMORY.yaml"
         memory_file = Path(memory_file)
         loaded = load(memory_file, fallback={})
         if not loaded or 'echo_memory' not in loaded:

@@ -21,7 +21,7 @@ class ModulatorAgent:
         if preferences_path is None:
             preferences_path = base / "memory" / "META_PREFERENCES.yaml"
         if agent_state_path is None:
-            agent_state_path = base.parent.parent / "agents" / "AGENT_STATE.yaml"
+            agent_state_path = base.parent.parent / "memory" / "AGENT_STATE.yaml"
         self.preferences_path = Path(preferences_path)
         self.agent_state_path = Path(agent_state_path)
         self.meta_preferences = load(self.preferences_path, fallback={})

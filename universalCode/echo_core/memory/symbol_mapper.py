@@ -1,6 +1,6 @@
 from pathlib import Path
 from echo_core.utils.yaml_utils import load
-MEMORY_PATH = Path(__file__).resolve().parent
+MEMORY_PATH = Path(__file__).resolve().parents[3] / 'memory'
 MAPPING_FILE = MEMORY_PATH / "SYMBOL_MAPPINGS.yaml"
 
 def load_symbol_mappings():

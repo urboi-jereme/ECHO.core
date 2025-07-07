@@ -1,7 +1,7 @@
 from pathlib import Path
 from echo_core.utils.yaml_utils import load, dump
 
-GOALS_PATH = Path(__file__).resolve().parent / 'GOALS.yaml'
+GOALS_PATH = Path(__file__).resolve().parents[3] / 'memory' / 'GOALS.yaml'
 
 
 def load_goals():

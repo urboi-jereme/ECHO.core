@@ -2,7 +2,7 @@ from pathlib import Path
 from datetime import datetime
 from echo_core.utils.yaml_utils import load, dump
 
-ALIGNMENTS_PATH = Path(__file__).resolve().parent / 'RECURSIVE_ALIGNMENTS.yaml'
+ALIGNMENTS_PATH = Path(__file__).resolve().parents[3] / 'memory' / 'RECURSIVE_ALIGNMENTS.yaml'
 
 def load_alignments(path: str | Path = ALIGNMENTS_PATH):
     """Load alignment entries from YAML file."""
