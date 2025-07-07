@@ -1,0 +1,14 @@
+g{
+    "id": "glyph_void_001",
+    "name": "Shadow of Intuition",
+    "symbol": "⬛",
+    "void_mode": true,
+    "background_pattern": [
+        "  █   █   ",
+        " █ █ █ █ █",
+        "  █   █   "
+    ],
+    "meaning": "Seen only when not read. Resonates through contrast and silence.",
+    "activation_code": "enter_void_mode()",
+    "resonance_level": 9.1
+}
