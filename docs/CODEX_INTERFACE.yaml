@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Codex Mutation API
+  version: 2.0.0
+  description: >
+    Interface for symbolic mutation, validation, execution, recursion auditing, and agent orchestration within the ECHO-Core recursive feedback loop.
+
+paths:
+
+  ### CORE FUNCTIONALITY ###
+  
+  /codex/patch:
+    post:
+      summary: Submit a symbolic patch to be executed
+      description: |
+        Applies a code mutation with symbolic justification.
+        Logged in PATCH_LOG.yaml with full audit trail.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file: { type: string }
+                patch: { type: string }
+                reason: { type: string }
+                motifs: 
+                  type: array
+                  items: { type: string }
+      responses:
+        '200': { description: Patch accepted }
+
+  /codex/execute:
+    post:
+      summary: Execute a command or symbolic operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command: { type: string }
+                description: { type: string }
+      responses:
+        '200': { description: Execution completed }
+
+  /codex/validate:
+    post:
+      summary: Validate recursion integrity or schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file: { type: string }
+                validation_type: 
+                  type: string
+                  enum: [schema_check, recursion_audit, motif_integrity, version_match]
+      responses:
+        '200': { description: Validation report }
+
+  /codex/rollback:
+    post:
+      summary: Revert last patch if recursion fails
+      description: |
+        Retrieves last entry from PATCH_LOG.yaml and reverts mutation.
+      responses:
+        '200': { description: Rollback executed }
+
+  /codex/status:
+    get:
+      summary: Return latest Codex execution state
+      responses:
+        '200': { description: Includes recent patch, test results, and symbolic tags }
+
+  /codex/selftest:
+    post:
+      summary: Run recursive self-audit of Codex logic
+      description: |
+        Performs symbolic coherence test, RAIP-R readiness scan, and belief drift analysis.
+      responses:
+        '200': { description: Selftest completed }
+
+  ### SYMBOLIC EXPANSION / FUTURE SUPPORT ###
+  
+  /codex/echo-link:
+    post:
+      summary: Sync Codex state with ECHO-core memory
+      description: Push recent patches or insights to ECHO_MEMORY.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                insight: { type: string }
+                source: { type: string }
+                patch_reference: { type: string }
+      responses:
+        '200': { description: Memory updated }
+
+  /codex/motif-diff:
+    post:
+      summary: Compare motif usage before and after patch
+      description: Highlights motif gain/loss or symbol inversion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                patch_id: { type: string }
+      responses:
+        '200': { description: Motif delta report }
+
+  /codex/prompt-rewrite:
+    post:
+      summary: Propose symbolic rewrite of agent prompt
+      description: Codex assists in rewriting a prompt based on motif collapse or identity drift
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agent_name: { type: string }
+                current_prompt: { type: string }
+                issues: 
+                  type: array
+                  items: { type: string }
+      responses:
+        '200': { description: Proposed prompt transformation }
+
+  /codex/archetype-restore:
+    post:
+      summary: Reintegrate a collapsed or removed archetype
+      description: Pulls symbolic structure from backup or belief signature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                archetype_name: { type: string }
+                source: { type: string }
+      responses:
+        '200': { description: Archetype reloaded }
+
+  /codex/predictive-repair:
+    post:
+      summary: Codex attempts to repair upcoming recursive failure
+      description: Uses PREDICTION_TRIALS.yaml to estimate system trajectory and propose patch
+      responses:
+        '200': { description: Suggested repair action }
+
+  ### INTROSPECTION / AGENT FEEDBACK ###
+  
+  /codex/capabilities:
+    get:
+      summary: Return all Codex-supported functions
+      description: |
+        Reflects Codex’s current self-concept and mutation ability.
+        Can be queried by other agents or GUIs.
+      responses:
+        '200': { description: Full capability map }
+
+  /codex/reasoning-trace:
+    get:
+      summary: Get recursive trace of last decision
+      description: |
+        Returns intermediate reasoning, motifs, failures, and final action chosen.
+      responses:
+        '200': { description: Trace returned }
+
+  /codex/snapshot:
+    post:
+      summary: Save current symbolic state to snapshot file
+      description: |
+        Exports full state of Codex reasoning, patch history, and symbolic register.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label: { type: string }
+      responses:
+        '200': { description: Snapshot written }
+
