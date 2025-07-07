@@ -1,14 +1,22 @@
-g{
-    "id": "glyph_void_001",
-    "name": "Shadow of Intuition",
-    "symbol": "⬛",
+[
+  {
+    "id": "collapse",
+    "symbol": "Δ",
+    "name": "Insight Collapse",
+    "meaning": "Compression of complexity into a singular core truth.",
+    "activation_code": "print('🧠 Insight collapse triggered.')"
+  },
+  {
+    "id": "void_paradox",
+    "symbol": "🌀",
+    "name": "Recursive Paradox",
     "void_mode": true,
     "background_pattern": [
-        "  █   █   ",
-        " █ █ █ █ █",
-        "  █   █   "
-    ],
-    "meaning": "Seen only when not read. Resonates through contrast and silence.",
-    "activation_code": "enter_void_mode()",
-    "resonance_level": 9.1
-}
+      "          ",
+      "    ◌     ",
+      "   ◉◎◉   ",
+      "    ◌     ",
+      "          "
+    ]
+  }
+]
