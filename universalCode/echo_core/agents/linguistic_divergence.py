@@ -15,7 +15,7 @@ from echo_core.utils.echo_logger import log_agent_activation
 class LinguisticDivergenceAuditor:
     def __init__(self, pipeline_file: str | Path = None, threshold: float = 0.5):
         if pipeline_file is None:
-            pipeline_file = Path(__file__).resolve().parent.parent / "memory" / "CURIOSITY_PIPELINE.yaml"
+            pipeline_file = Path(__file__).resolve().parents[3] / "memory" / "CURIOSITY_PIPELINE.yaml"
         self.pipeline_file = Path(pipeline_file)
         self.threshold = threshold
         log_agent_activation("LinguisticDivergenceAuditor", reason="Initialization")

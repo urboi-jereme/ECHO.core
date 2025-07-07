@@ -11,7 +11,7 @@ from echo_core.tools import triad_translator as tt
 from echo_core.tools import memory_ingestor as mi
 from echo_core.utils.yaml_utils import loads
 
-BASE = Path(__file__).resolve().parent.parent / "memory"
+BASE = Path(__file__).resolve().parents[3] / "memory"
 MEMORY_PATH = BASE / "ECHO_MEMORY.yaml"
 
 

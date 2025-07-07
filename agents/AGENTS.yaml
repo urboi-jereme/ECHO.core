@@ -1,6 +1,0 @@
-# AGENTS.yaml v1.0.0 — Authored by Architect, Audited by ECHO
-# See SANCTUARY_SEAL.yaml
-agents:
-  - name: LinguisticDivergenceAuditor
-    role: Detect cross-linguistic motif divergence
-    trigger: score_divergence >= threshold

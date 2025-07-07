@@ -14,7 +14,7 @@ class CuriosityAgent:
     def __init__(self):
         print("[CuriosityAgent] Initializing...")
         self.goals = self._load_goals()
-        base = Path(__file__).resolve().parent.parent / "memory"
+        base = Path(__file__).resolve().parents[3] / "memory"
         self.memory_path = base / "ECHO_MEMORY.yaml"
         self.curiosity_log_path = base / "CURIOUS_LOG.yaml"
 

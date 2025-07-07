@@ -8,7 +8,7 @@ from typing import Iterable, Dict, Any
 
 from echo_core.utils.yaml_utils import load, dump, loads
 
-BASE = Path(__file__).resolve().parent.parent / "memory"
+BASE = Path(__file__).resolve().parents[3] / "memory"
 MEMORY_PATH = BASE / "ECHO_MEMORY.yaml"
 
 

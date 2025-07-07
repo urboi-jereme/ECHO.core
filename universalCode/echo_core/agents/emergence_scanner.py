@@ -12,7 +12,7 @@ class EmergenceScanner:
         self.log_path = log_path or LOG_PATH
 
     def scan(self):
-        base = Path(__file__).resolve().parent.parent / "memory"
+        base = Path(__file__).resolve().parents[3] / "memory"
         memory = load(base / "ECHO_MEMORY.yaml", fallback={"echo_memory": []}).get("echo_memory", [])
         goals = load(base / "GOALS.yaml", fallback=[]) or []
         beliefs = load(base / "BELIEFS.yaml", fallback={"beliefs": []}).get("beliefs", [])

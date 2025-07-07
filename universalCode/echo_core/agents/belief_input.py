@@ -12,9 +12,9 @@ from echo_core.utils.yaml_utils import load, dump
 class BeliefInputAgent:
     def __init__(self, memory_file: str | Path = None, beliefs_file: str | Path = None):
         if memory_file is None:
-            memory_file = Path(__file__).resolve().parent.parent / "memory" / "ECHO_MEMORY.yaml"
+            memory_file = Path(__file__).resolve().parents[3] / "memory" / "ECHO_MEMORY.yaml"
         if beliefs_file is None:
-            beliefs_file = Path(__file__).resolve().parent.parent / "memory" / "BELIEFS.yaml"
+            beliefs_file = Path(__file__).resolve().parents[3] / "memory" / "BELIEFS.yaml"
         self.intuition = IntuitionAgent(memory_file)
         self.beliefs_file = str(beliefs_file)
         data = load(beliefs_file, fallback={"beliefs": []})

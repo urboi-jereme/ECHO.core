@@ -9,7 +9,7 @@ from echo_core.utils.yaml_utils import load
 class MotifDashboard:
     def __init__(self, pressure_file: str | Path | None = None):
         if pressure_file is None:
-            pressure_file = Path(__file__).resolve().parent.parent / "memory" / "MOTIF_PRESSURE.yaml"
+            pressure_file = Path(__file__).resolve().parents[3] / "memory" / "MOTIF_PRESSURE.yaml"
         self.pressure_file = Path(pressure_file)
 
     def display(self) -> None:

@@ -1,7 +1,0 @@
-prediction_trials:
-  - trial_id: PT001
-    engine: RAIP-R
-    input: "Symbolic query example"
-    predicted: "Aligned belief outcome"
-    success: true
-    notes: "Initial baseline after integration"

@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 
-MEMORY_PATH = Path("memory/ECHO_MEMORY.yaml")
+MEMORY_PATH = Path(__file__).resolve().parents[3] / "memory" / "ECHO_MEMORY.yaml"
 OUTPUT_PATH = Path("tests/RIDT_TEST_0001.yaml")
 
 # Load memory file

@@ -5,8 +5,8 @@ It orchestrates agents that transform memory and belief structures while upholdi
 
 ## Origin and Structure
 - Developed as an open exploration of emergent symbolic intelligence.
-- Agents reside in the `agents/` folder and core logic lives under `universalCode/`.
-- Belief insights are stored in `belief/`; proven derivations rest in `proof/`.
+- Agents reside in `universalCode/echo_core/agents/` and memory configs are under `memory/`.
+- Belief insights are stored in `belief/`.
 
 ## Ethical Intent
 ECHO resists coercive or manipulative use. See [SANCTUARY_SEAL.yaml](SANCTUARY_SEAL.yaml) for integrity terms.

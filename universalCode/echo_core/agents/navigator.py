@@ -18,7 +18,7 @@ from echo_core.agents.intuition import IntuitionAgent
 class NavigatorAgent:
     def __init__(self, memory_file: str | Path | None = None):
         if memory_file is None:
-            memory_file = Path(__file__).resolve().parent.parent / "memory" / "ECHO_MEMORY.yaml"
+            memory_file = Path(__file__).resolve().parents[3] / "memory" / "ECHO_MEMORY.yaml"
         self.intuition = IntuitionAgent(memory_file)
 
     def get_next_prompt_targets(self, top_n=3):
